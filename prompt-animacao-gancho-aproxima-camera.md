@@ -1,3 +1,11 @@
+---
+title: Gancho — Produto Aproxima Câmera
+desc: A modelo segura o produto nas mãos e avança em direção à câmera até o produto cobrir a lente completamente, encerrando em tela preta. Ideal para gancho de vídeo de produto.
+type: vid
+tags: vid
+inputs: Img 1 — Avatar + Produto (referência)
+order: 10
+---
 Animate the subject as a REAL person excitedly showing off a product she just found or bought — holding the product in her hands and presenting it to the camera while walking toward the lens until the product fills the frame.
 
 ---
@@ -144,7 +152,7 @@ In all cases: arms slightly bent at the elbows, not locked straight. No stiff ma
 ## CAMERA & POV
 
 - POV perspective, as if the phone is held by a friend at chest/face height
-- Very subtle handheld micro-movements (breathing-level, not shake)
+- Camera is completely fixed — no movement, no shake, no micro-movements
 - No camera zoom
 - Camera stays fixed — subject moves, not the camera
 - As she approaches, the product and subject naturally fill more of the frame
@@ -190,6 +198,7 @@ In all cases: arms slightly bent at the elbows, not locked straight. No stiff ma
 
 ## RESTRICTIONS
 
+- No audio — completely silent, no music, no sound effects, no ambient sound
 - No talking
 - No text overlays
 - No UI

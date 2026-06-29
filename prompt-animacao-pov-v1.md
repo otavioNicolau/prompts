@@ -1,3 +1,12 @@
+---
+title: Animação POV v1 — Aproximação + Detalhe
+desc: A modelo se aproxima da câmera, toca suavemente um detalhe da roupa (laço/renda) e recua. Expressão facial alterna naturalmente entre neutro e sorriso breve.
+type: vid
+tags: vid
+inputs: Img 1 — Avatar com roupa
+video: videos/Animação POV v1.mp4
+order: 4
+---
 Animate the subject as a REAL person presenting clothing in a POV-style video.
 
 ---
@@ -89,8 +98,7 @@ Animate the subject as a REAL person presenting clothing in a POV-style video.
 ## CAMERA & POV
 
 - POV perspective, as if the phone is held by a person
-- Very subtle handheld micro-movements
-- No camera shake
+- Camera is completely fixed — no movement, no shake, no micro-movements
 - No zoom
 - Camera remains at chest/face height
 
@@ -119,6 +127,7 @@ Animate the subject as a REAL person presenting clothing in a POV-style video.
 
 ## RESTRICTIONS
 
+- No audio — completely silent, no music, no sound effects, no ambient sound
 - No talking
 - No text
 - No UI

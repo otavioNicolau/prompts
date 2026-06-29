@@ -1,3 +1,12 @@
+---
+title: Animação CTA — Beijo
+desc: A modelo se aproxima da câmera, sopra um beijo natural e expressivo diretamente para a lente. Gesto caloroso e genuíno com expressão facial progressiva.
+type: vid
+tags: vid
+inputs: Img 1 — Avatar
+video: videos/Animação CTA — Beijo.mp4
+order: 9
+---
 Animate the subject as a REAL person delivering a natural, charming kiss-blow gesture directly to the camera.
 
 ---
@@ -98,8 +107,7 @@ The kiss-blow must feel completely natural, like something a real person does ca
 ## CAMERA & POV
 
 - POV perspective, as if the phone is held by a person
-- Very subtle handheld micro-movements
-- No camera shake
+- Camera is completely fixed — no movement, no shake, no micro-movements
 - No zoom
 - Camera remains at chest/face height
 
@@ -129,6 +137,7 @@ The kiss-blow must feel completely natural, like something a real person does ca
 
 ## RESTRICTIONS
 
+- No audio — completely silent, no music, no sound effects, no ambient sound
 - No talking
 - No text
 - No UI

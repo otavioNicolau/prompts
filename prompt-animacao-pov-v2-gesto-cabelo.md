@@ -1,3 +1,12 @@
+---
+title: Animação POV v2 — Gesto de Cabelo
+desc: Igual ao v1, com adição de um gesto casual de passar a mão no cabelo (~1 segundo) após a sequência principal de movimentos.
+type: vid
+tags: vid
+inputs: Img 1 — Avatar com roupa
+video: videos/Animação POV v2.mp4
+order: 5
+---
 Animate the subject as a REAL person presenting clothing in a POV-style video.
 
 ---
@@ -101,8 +110,7 @@ After the main body movement sequence:
 ## CAMERA & POV
 
 - POV perspective, as if the phone is held by a person
-- Very subtle handheld micro-movements
-- No camera shake
+- Camera is completely fixed — no movement, no shake, no micro-movements
 - No zoom
 - Camera remains at chest/face height
 
@@ -131,6 +139,7 @@ After the main body movement sequence:
 
 ## RESTRICTIONS
 
+- No audio — completely silent, no music, no sound effects, no ambient sound
 - No talking
 - No text
 - No UI

@@ -1,3 +1,11 @@
+---
+title: Roupa Achado — Revela e Recua
+desc: A modelo SEGURA a peça nas mãos (não está vestindo) e a apresenta como se tivesse acabado de encontrar. Usa a imagem de referência apenas para replicar a peça com fidelidade. Depois recua lentamente.
+type: vid
+tags: vid
+inputs: Img 1 — Avatar vestindo a peça (referência)
+order: 8
+---
 Animate the subject as a REAL person excitedly showing off a clothing item she just found or bought — holding the garment in her hands and presenting it to the camera before wearing it.
 
 ---
@@ -134,7 +142,7 @@ In both cases: arms slightly bent at the elbows, not locked straight. No stiff m
 ## CAMERA & POV
 
 - POV perspective, as if the phone is held by a friend at chest/face height
-- Very subtle handheld micro-movements (breathing-level, not shake)
+- Camera is completely fixed — no movement, no shake, no micro-movements
 - No camera zoom
 - Camera stays fixed — subject moves, not the camera
 - As she retreats, more of her body and environment enters the frame naturally
@@ -177,6 +185,7 @@ In both cases: arms slightly bent at the elbows, not locked straight. No stiff m
 
 ## RESTRICTIONS
 
+- No audio — completely silent, no music, no sound effects, no ambient sound
 - No talking
 - No text
 - No UI

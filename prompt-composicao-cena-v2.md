@@ -1,3 +1,11 @@
+---
+title: Composição de Cena v2
+desc: Versão aprimorada com bloqueio absoluto de identidade. Nenhum traço da modelo da Imagem 1 (etnia, tom de pele, proporções) pode transferir para o avatar. HARD LOCK de distância e escala.
+type: img
+tags: img
+inputs: Img 1 — Ambiente + Pose | Img 2 — Avatar | Img 3 — Roupa
+order: 2
+---
 Use the first image ONLY as an environment + pose reference.
 Use the second image as the ONLY avatar identity reference.
 Use the third image as the ONLY clothing reference (if provided).

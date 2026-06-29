@@ -1,3 +1,11 @@
+---
+title: Composição de Cena v1
+desc: Extrai pose + ambiente da Imagem 1, insere o avatar da Imagem 2 e aplica a roupa da Imagem 3. Render ultra-realista com física de iluminação natural.
+type: img
+tags: img
+inputs: Img 1 — Ambiente + Pose | Img 2 — Avatar | Img 3 — Roupa (opcional)
+order: 1
+---
 Use the first image ONLY as an environment + pose reference.
 Use the second image as the ONLY avatar identity reference.
 Use the third image ONLY as the clothing reference (if provided).

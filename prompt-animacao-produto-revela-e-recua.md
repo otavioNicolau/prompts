@@ -1,3 +1,11 @@
+---
+title: Produto — Revela e Recua
+desc: A modelo pinça levemente o tecido da roupa que está vestindo, levanta em direção à câmera mostrando material e caimento, depois recua lentamente revelando o look completo.
+type: vid
+tags: vid
+inputs: Img 1 — Avatar com roupa vestida
+order: 7
+---
 Animate the subject as a REAL person presenting her outfit in a natural, ultra-realistic POV-style video.
 
 ---
@@ -107,7 +115,7 @@ Animate the subject as a REAL person presenting her outfit in a natural, ultra-r
 ## CAMERA & POV
 
 - POV perspective, as if the phone is held by a person at chest/face height
-- Very subtle handheld micro-movements (breathing-level, not shake)
+- Camera is completely fixed — no movement, no shake, no micro-movements
 - No camera zoom
 - Camera stays fixed — subject moves, not the camera
 - As she retreats, more of her body and environment enters the frame naturally
@@ -150,6 +158,7 @@ Animate the subject as a REAL person presenting her outfit in a natural, ultra-r
 
 ## RESTRICTIONS
 
+- No audio — completely silent, no music, no sound effects, no ambient sound
 - No talking
 - No text
 - No UI
