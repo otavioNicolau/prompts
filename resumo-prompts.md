@@ -32,6 +32,13 @@ A modelo dá dois passos em direção à câmera, toca suavemente um detalhe da 
 
 ---
 
+### [prompt-animacao-pov-v3-giro-lateral.md](prompt-animacao-pov-v3-giro-lateral.md)
+**Versão expandida do v1 com giro lateral de tronco**
+
+Igual ao v1 (aproxima + toca detalhe + recua), mas acrescenta giro de tronco de 60–90° para mostrar a silhueta e o caimento da roupa de perfil, seguido de um olhar casual de volta para a câmera antes de retornar à frente. Sem 360°, câmera 100% fixa.
+
+---
+
 ### [prompt-animacao-pov-v2-gesto-cabelo.md](prompt-animacao-pov-v2-gesto-cabelo.md)
 **Versão do v1 com gesto adicional de cabelo**
 
@@ -89,6 +96,7 @@ Câmera 100% fixa. Abre com a palma cobrindo 100% do quadro. 1 passo para trás 
 | composicao-cena-v2 | Imagem | 3 imgs | Idem + identidade blindada |
 | troca-de-roupa | Imagem | 2 imgs | Avatar com nova roupa |
 | animacao-pov-v1 | Vídeo | 1 img | Aproximação + toque no detalhe |
+| animacao-pov-v3-giro-lateral | Vídeo | 1 img | Aproxima + detalhe + recua + giro tronco lateral para mostrar roupa de perfil |
 | animacao-pov-v2-gesto-cabelo | Vídeo | 1 img | Idem + gesto de cabelo |
 | animacao-json-cta | Vídeo (JSON) | 1 img | CTA com dedo apontando para baixo |
 | animacao-produto-revela-e-recua | Vídeo | 1 img | Pinça roupa vestida → recua |
