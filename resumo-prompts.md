@@ -60,6 +60,13 @@ A modelo NÃO está vestindo a peça — ela a segura com as duas mãos e a exib
 
 ---
 
+### [prompt-animacao-roupa-fecha-camera.md](prompt-animacao-roupa-fecha-camera.md)
+**Avatar (Img 1) + peça de referência (Img 2) → roupa fecha câmera**
+
+A modelo NÃO está vestindo a peça — ela a segura com ambas as mãos já próxima à câmera desde o primeiro frame. Balança levemente a peça (~2s) e depois avança lentamente até o tecido cobrir 100% do quadro. Sem fade, sem zoom digital — o tecido fecha a lente por aproximação física.
+
+---
+
 ## Tabela rápida
 
 | Arquivo | Tipo | Entradas | Resultado |
@@ -72,3 +79,4 @@ A modelo NÃO está vestindo a peça — ela a segura com as duas mãos e a exib
 | animacao-json-cta | Vídeo (JSON) | 1 img | CTA com dedo apontando para baixo |
 | animacao-produto-revela-e-recua | Vídeo | 1 img | Pinça roupa vestida → recua |
 | animacao-roupa-achado-revela-e-recua | Vídeo | 1 img | Segura peça nas mãos → recua |
+| animacao-roupa-fecha-camera | Vídeo | 2 imgs | Segura peça (Img 2) → aproxima → fecha câmera com tecido |
