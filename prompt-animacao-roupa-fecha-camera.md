@@ -4,6 +4,7 @@ desc: Inicia já próxima à câmera segurando a peça (Img 2), balança levemen
 type: vid
 tags: vid
 inputs: Img 1 — Avatar | Img 2 — Peça de referência
+video: videos/Animação  Roupa Fecha Câmera.mp4
 order: 10
 ---
 Use Image 1 as the BASE avatar — identity, face, skin, and body.

@@ -67,6 +67,20 @@ A modelo NÃO está vestindo a peça — ela a segura com ambas as mãos já pr�
 
 ---
 
+### [prompt-animacao-composicao-giro-lateral.md](prompt-animacao-composicao-giro-lateral.md)
+**Mesmos inputs do Composição de Cena v1 → vídeo com giro lateral**
+
+Entrada única: avatar já com roupa (Img 1). A modelo faz um giro lento e natural de 60–90° para mostrar o perfil e silhueta da roupa, segura a posição por ~1s e retorna à frente. Câmera fixa, movimento casual — não é passarela nem 360°.
+
+---
+
+### [prompt-animacao-mao-fecha-camera.md](prompt-animacao-mao-fecha-camera.md)
+**Modelo já vestida (Img 1) → levanta a mão → palma fecha câmera 100%**
+
+Câmera 100% fixa. Abre com a palma cobrindo 100% do quadro. 1 passo para trás → baixa o braço revelando o look → giro de tronco lateral (~60–90°) para mostrar a roupa de perfil → retorna à frente.
+
+---
+
 ## Tabela rápida
 
 | Arquivo | Tipo | Entradas | Resultado |
@@ -80,3 +94,5 @@ A modelo NÃO está vestindo a peça — ela a segura com ambas as mãos já pr�
 | animacao-produto-revela-e-recua | Vídeo | 1 img | Pinça roupa vestida → recua |
 | animacao-roupa-achado-revela-e-recua | Vídeo | 1 img | Segura peça nas mãos → recua |
 | animacao-roupa-fecha-camera | Vídeo | 2 imgs | Segura peça (Img 2) → aproxima → fecha câmera com tecido |
+| animacao-mao-fecha-camera | Vídeo | 1 img | Modelo levanta a mão → palma cobre 100% do quadro |
+| animacao-composicao-giro-lateral | Vídeo | 1 img | Giro lateral ~60–90° para mostrar roupa de perfil → retorna à frente |
