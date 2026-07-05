@@ -131,6 +131,7 @@ Animate the subject as a REAL person revealing a clothing item — she starts al
 
 - Preserve original facial identity from Image 1
 - Preserve skin texture
+- Preserve skin exactly as in Image 1 — no tattoos or markings added anywhere on the body
 - Natural hair movement during the walk (slight motion)
 - Natural fabric physics matching Image 2 material
 - No beauty filters
@@ -148,6 +149,7 @@ Animate the subject as a REAL person revealing a clothing item — she starts al
 - No effects or transitions added digitally
 - No zoom — only physical approach
 - No influencer posing clichés
+- No tattoos of any kind, anywhere on the body
 - The garment must remain the EXACT piece from Image 2 throughout — no shape changes, no color drift
 
 ---

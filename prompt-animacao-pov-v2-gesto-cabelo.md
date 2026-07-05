@@ -129,6 +129,7 @@ After the main body movement sequence:
 
 - Preserve original facial identity
 - Preserve skin texture
+- Preserve skin exactly as in Image 1 — no tattoos or markings added anywhere on the body
 - Preserve hair movement (slight natural motion)
 - Natural fabric physics
 - No beauty filters
@@ -146,6 +147,7 @@ After the main body movement sequence:
 - No effects
 - No exaggerated dance
 - No influencer posing clichés
+- No tattoos of any kind, anywhere on the body
 
 ---
 

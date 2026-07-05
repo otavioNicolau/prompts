@@ -16,6 +16,7 @@ Animate a hyper-realistic POV video. The concept: the subject is intentionally b
 ## IMAGE INPUT (CRITICAL)
 
 - Preserve the subject's face, skin tone, body proportions, and hair exactly as in Image 1
+- Preserve the subject's skin exactly as in Image 1 — no tattoos, markings, or blemishes added anywhere on the body
 - Preserve the clothing exactly: color, fabric, texture, cut, and fit
 - Preserve the environment: background, lighting, framing, and camera distance
 - The subject's final position in the video must match Image 1
@@ -136,6 +137,7 @@ Animate a hyper-realistic POV video. The concept: the subject is intentionally b
 
 - Preserve original facial identity from Image 1
 - Preserve skin texture on face and hand
+- Preserve skin exactly as in Image 1 — no tattoos or markings added anywhere on the body
 - Natural hair movement during the backward walk
 - Natural fabric physics on clothing as she walks
 - No beauty filters, no smoothing, no stylization
@@ -151,6 +153,7 @@ Animate a hyper-realistic POV video. The concept: the subject is intentionally b
 - No zoom
 - No exaggerated or theatrical gesture
 - No influencer posing clichés
+- No tattoos of any kind, anywhere on the body
 
 ---
 

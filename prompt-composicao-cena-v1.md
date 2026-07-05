@@ -54,6 +54,7 @@ The avatar inserted later MUST match this exact pose and angle.
   - Keep the same facial structure
   - Keep the same body proportions
   - Keep the same realism level
+  - Keep the skin exactly as in Image 2 — no tattoos, ink, or markings added anywhere on the body
 - Position the avatar to EXACTLY MATCH:
   - The pose of the original model in Image 1
   - The body angle of the original model
@@ -90,6 +91,7 @@ The avatar should replace the original model one-to-one in space.
 - Do NOT change facial expression
 - Do NOT stylize
 - Do NOT add text, UI, logos, or watermarks
+- Do NOT add tattoos of any kind, anywhere on the body
 
 ---
 

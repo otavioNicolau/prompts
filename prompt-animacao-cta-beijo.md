@@ -127,6 +127,7 @@ The kiss-blow must feel completely natural, like something a real person does ca
 
 - Preserve original facial identity
 - Preserve skin texture
+- Preserve skin exactly as in Image 1 — no tattoos or markings added anywhere on the body
 - Preserve hair movement (slight natural motion)
 - Natural fabric physics
 - No beauty filters
@@ -145,6 +146,7 @@ The kiss-blow must feel completely natural, like something a real person does ca
 - No exaggerated or theatrical kiss gesture
 - No influencer posing clichés
 - No winking unless it occurs completely naturally with the expression
+- No tattoos of any kind, anywhere on the body
 
 ---
 

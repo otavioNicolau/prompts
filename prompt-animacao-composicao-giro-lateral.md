@@ -16,6 +16,7 @@ Animate a hyper-realistic POV video where the subject performs a slow, natural l
 ## IMAGE INPUT (CRITICAL)
 
 - Preserve the subject's face, skin tone, body proportions, and hair exactly as in Image 1
+- Preserve the subject's skin exactly as in Image 1 — no tattoos, markings, or blemishes added anywhere on the body
 - Preserve the clothing exactly: color, fabric, texture, cut, shape, and fit
 - Preserve the environment: background, lighting, framing, and camera distance
 - The subject's starting and ending position must match Image 1
@@ -115,6 +116,7 @@ The rotation must feel completely natural — like a person casually turning to 
 ## IDENTITY LOCK (CRITICAL)
 
 - DO NOT change face, skin tone, body proportions, or hair from Image 1
+- DO NOT add tattoos, piercings, or any skin markings not present in Image 1
 - DO NOT alter or reinterpret the clothing
 - DO NOT change the background or environment
 - Preserve everything from Image 1 exactly
@@ -135,6 +137,7 @@ The rotation must feel completely natural — like a person casually turning to 
 - Ultra realistic photographic rendering throughout all frames
 - Visible skin microtexture
 - Natural skin tone variation — no flat color
+- Clean skin exactly as in Image 1 — no tattoos, ink, or scars introduced
 - 50mm lens equivalent perspective
 - True camera dynamic range
 - No beauty filter, no smoothing, no plastic effect, no CGI look
@@ -163,6 +166,7 @@ The rotation must feel completely natural — like a person casually turning to 
 - No runway walk or fashion show movement
 - No exaggerated posing
 - No influencer clichés
+- No tattoos of any kind, anywhere on the body
 
 ---
 

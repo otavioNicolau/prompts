@@ -60,6 +60,7 @@ Never force tightness or looseness against the reference.
 - Do NOT change face
 - Do NOT change body shape or proportions
 - Do NOT change skin tone
+- Do NOT add tattoos, ink, or any skin markings not present in Image 1
 - Do NOT change hair
 - Do NOT change pose or expression
 - Do NOT change background
@@ -93,3 +94,4 @@ Never force tightness or looseness against the reference.
 - No filters
 - No cinematic effects
 - No stylization
+- No tattoos of any kind, anywhere on the body

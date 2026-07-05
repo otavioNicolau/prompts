@@ -161,6 +161,7 @@ Animate the subject as a REAL person presenting clothing in a POV-style video wi
 
 - Preserve original facial identity
 - Preserve skin texture
+- Preserve skin exactly as in Image 1 — no tattoos or markings added anywhere on the body
 - Preserve hair movement (slight natural motion during rotation)
 - Natural fabric physics — especially during torso turn
 - No beauty filters
@@ -180,6 +181,7 @@ Animate the subject as a REAL person presenting clothing in a POV-style video wi
 - No runway walk or fashion show movement
 - No exaggerated dance
 - No influencer posing clichés
+- No tattoos of any kind, anywhere on the body
 
 ---
 

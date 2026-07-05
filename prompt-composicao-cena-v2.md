@@ -60,6 +60,7 @@ The avatar from Image 2 is the ONLY identity source.
 ABSOLUTE LOCK:
 - Preserve exact face
 - Preserve exact skin tone
+- Preserve exact skin condition — no tattoos, ink, or markings added anywhere on the body
 - Preserve exact body proportions
 - Preserve exact body weight
 - Preserve exact ethnicity
@@ -121,6 +122,7 @@ The placement must be a 1:1 spatial replacement.
 - No structural facial changes
 - No distance variation
 - No subject scaling differences
+- No tattoos of any kind, anywhere on the body
 
 ---
 
