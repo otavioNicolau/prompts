@@ -13,9 +13,9 @@ order: 6
   "aspectRatio": "9:16",
   "durationSeconds": 8,
   "seed": 12345,
-  "subjectRef": "usar a imagem enviada como âncora de identidade, mantendo exatamente as mesmas feições, tom de pele, cor de cabelo, mesma cor, mesma textura, mesmo volume e mesmo comprimento durante TODO o vídeo, sem qualquer alteração em nenhum momento, e mantendo a pele exatamente como na imagem original — sem adicionar tatuagens, marcas ou manchas em nenhuma parte do corpo",
+  "subjectRef": "usar a imagem enviada como âncora de identidade, mantendo exatamente as mesmas feições, tom de pele, cor de cabelo, mesma cor, mesma textura, mesmo volume e mesmo comprimento durante TODO o vídeo, sem qualquer alteração em nenhum momento, sem tatuagens, piercings ou tinta na pele",
   "referenceStyle": "realismo cinematográfico natural, interação direta com a câmera estilo gravação em celular",
-  "negativePrompt": "sem áudio, sem música de fundo, sem efeitos sonoros, sem som ambiente, sem falas, sem áudio vocal, sem movimento labial articulando palavras, sem legendas, sem texto na tela, sem logos, sem marcas d'água, sem deformações corporais, sem dedos extras, sem distorção de mãos, sem artefatos de IA, sem mudança de cor do cabelo, sem mudança de textura do cabelo, sem mudança de estilo do cabelo, sem alteração de iluminação que modifique a cor do cabelo, sem tatuagens de qualquer tipo em qualquer parte do corpo",
+  "negativePrompt": "sem áudio, sem música de fundo, sem efeitos sonoros, sem som ambiente, sem falas, sem áudio vocal, sem movimento labial articulando palavras, sem legendas, sem texto na tela, sem logos, sem marcas d'água, sem deformações corporais, sem dedos extras, sem distorção de mãos, sem artefatos de IA, sem mudança de cor do cabelo, sem mudança de textura do cabelo, sem mudança de estilo do cabelo, sem alteração de iluminação que modifique a cor do cabelo, sem tatuagens de qualquer tipo em qualquer parte do corpo, especialmente nos braços, ombros e omoplatas, área onde a IA mais costuma adicionar marcas por engano; qualquer parte da pele que não esteja claramente visível na imagem enviada deve ser renderizada como pele lisa e sem marcas, na mesma tonalidade da pele visível, sem inventar nenhum padrão ou tatuagem em áreas não mostradas na imagem original",
   "safety": {
     "allowMinorViolence": false,
     "allowNudity": false

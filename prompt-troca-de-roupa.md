@@ -60,7 +60,8 @@ Never force tightness or looseness against the reference.
 - Do NOT change face
 - Do NOT change body shape or proportions
 - Do NOT change skin tone
-- Do NOT add tattoos, ink, or any skin markings not present in Image 1
+- Do NOT add tattoos, piercings, or ink anywhere on the skin — especially the arms, shoulders, and shoulder blades, the most common area where AI mistakenly adds a mark
+- Any part of the skin NOT clearly visible in Image 1 (e.g. back of the upper arm, shoulder blade) must be rendered as plain, unmarked skin matching the visible skin tone — do not invent any tattoo, pattern, or mark in areas not shown in Image 1
 - Do NOT change hair
 - Do NOT change pose or expression
 - Do NOT change background

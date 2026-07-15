@@ -238,6 +238,7 @@
       <div class="card-header">
         <div class="card-meta">${badges}</div>
         <div class="card-title">${p.title}</div>
+        ${p.desc ? `<div class="card-desc">${esc(p.desc)}</div>` : ''}
         <div class="inputs">${inputBadges}</div>
       </div>
       ${p.video ? `<div class="card-video">

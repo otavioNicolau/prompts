@@ -131,7 +131,8 @@ Animate the subject as a REAL person revealing a clothing item — she starts al
 
 - Preserve original facial identity from Image 1
 - Preserve skin texture
-- Preserve skin exactly as in Image 1 — no tattoos or markings added anywhere on the body
+- No tattoos, piercings, or ink anywhere on the skin — especially the arms, shoulders, and shoulder blades, the most common area where AI mistakenly adds a mark
+- Any part of the skin NOT clearly visible in Image 1 (e.g. back of the upper arm, shoulder blade) must be rendered as plain, unmarked skin matching the visible skin tone and texture — do not invent, generate, or guess any tattoo, pattern, or mark in areas not shown in Image 1
 - Natural hair movement during the walk (slight motion)
 - Natural fabric physics matching Image 2 material
 - No beauty filters

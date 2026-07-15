@@ -16,7 +16,8 @@ Animate a hyper-realistic POV video. The concept: the subject is intentionally b
 ## IMAGE INPUT (CRITICAL)
 
 - Preserve the subject's face, skin tone, body proportions, and hair exactly as in Image 1
-- Preserve the subject's skin exactly as in Image 1 — no tattoos, markings, or blemishes added anywhere on the body
+- No tattoos, piercings, or ink anywhere on the skin — especially the arms, shoulders, and shoulder blades, the most common area where AI mistakenly adds a mark
+- Any part of the skin NOT clearly visible in Image 1 (e.g. back of the upper arm, shoulder blade, side of the torso) must be rendered as plain, unmarked skin matching the visible skin tone and texture — do not invent, generate, or guess any tattoo, pattern, or mark in areas not shown in Image 1
 - Preserve the clothing exactly: color, fabric, texture, cut, and fit
 - Preserve the environment: background, lighting, framing, and camera distance
 - The subject's final position in the video must match Image 1
@@ -137,7 +138,7 @@ Animate a hyper-realistic POV video. The concept: the subject is intentionally b
 
 - Preserve original facial identity from Image 1
 - Preserve skin texture on face and hand
-- Preserve skin exactly as in Image 1 — no tattoos or markings added anywhere on the body
+- No tattoos, piercings, or ink anywhere on the skin
 - Natural hair movement during the backward walk
 - Natural fabric physics on clothing as she walks
 - No beauty filters, no smoothing, no stylization
