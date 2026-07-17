@@ -11,209 +11,166 @@ order: 10
 
 ## OBJECTIVE
 
-Animate the subject from Image 1 as a real person naturally presenting the outfit in a realistic POV smartphone video.
+Use Image 1 as the visual reference for the subject's appearance, outfit, environment and overall composition.
 
-The animation should feel spontaneous and authentic, as though she is casually showing the outfit to someone recording with a phone.
+Create a natural smartphone-style video where the subject casually presents the outfit through relaxed body movement and a gentle side rotation.
 
-Preserve the subject's identity, clothing, environment, lighting and framing exactly as shown in Image 1.
+Maintain a consistent appearance, clothing, lighting and framing throughout the animation.
 
 ---
 
-# IDENTITY LOCK
+# VISUAL CONSISTENCY
 
-Preserve exactly:
+Throughout the video, maintain a consistent:
 
-- Face
-- Facial identity
-- Facial proportions
+- Facial appearance
 - Skin tone
-- Skin texture
-- Hair
+- Hairstyle
 - Hair color
 - Hair texture
 - Hair volume
 - Hair length
 - Body proportions
-- Clothing
+- Outfit
 - Accessories
-- Pose proportions
 - Background
 - Lighting
 - Camera framing
 
-Identity preservation has absolute priority.
+Avoid noticeable visual changes during the animation.
 
-Never beautify, redesign, reinterpret or stylize any aspect of the subject.
+Keep the overall appearance stable from beginning to end.
 
 ---
 
 # CAMERA
 
-POV perspective from a person standing still while holding a smartphone.
+POV perspective from someone holding a smartphone.
 
-The camera remains intentionally fixed throughout the entire video.
+The camera remains stationary throughout the clip.
 
 Maintain:
 
 - Chest-to-face height
 - Fixed framing
+- Approximately 50mm perspective
 - Fixed focal length
-- 50mm equivalent perspective
 - No zoom
 - No pan
 - No tilt
-- No rotation
-- No handheld shake
-- No micro-jitter
-- No focus breathing
+- No camera rotation
+- No visible camera shake
 
 Only the subject moves.
 
 ---
 
-# ANIMATION SEQUENCE
+# ANIMATION
 
-The animation is continuous and naturally connected from beginning to end.
+The movement flows continuously and naturally.
 
-No pauses feel artificial.
+No abrupt transitions.
 
-No movement appears choreographed.
+No choreographed behavior.
 
 ---
 
 ## PHASE 1 — APPROACH
 
-The subject begins exactly as shown in Image 1.
+The subject begins in the same general position shown in Image 1.
 
-She stands comfortably at a natural distance.
+She stands comfortably.
 
 Visible natural breathing.
 
 Occasional blinking.
 
-Small balance adjustments.
+Subtle balance adjustments.
 
-She calmly walks toward the camera with two small, relaxed steps.
+She calmly takes two relaxed steps toward the camera.
 
-Movement feels effortless.
-
-No runway behavior.
-
-No exaggerated posing.
+Her movement feels effortless and natural.
 
 ---
 
 ## PHASE 2 — CLOTHING DETAIL
 
-While approaching, she naturally raises one hand and gently touches the most visually prominent clothing detail visible in Image 1.
+While approaching, she naturally raises one hand and briefly touches the most noticeable clothing detail.
 
-This may be:
+Examples include:
 
 - Bow
 - Lace
-- Fabric texture
 - Waist detail
 - Decorative trim
+- Fabric texture
 
-She lightly holds the fabric for approximately one second.
+She lightly holds the fabric for about one second before naturally releasing it.
 
-The gesture feels spontaneous and natural.
-
-No emphasis.
-
-No deliberate presentation.
-
-She naturally releases the fabric.
+The gesture feels casual rather than intentional.
 
 ---
 
 ## PHASE 3 — RETURN
 
-She calmly takes one small step backward.
+She calmly steps back toward her starting position.
 
-She returns close to her original position.
+She settles comfortably.
 
-Her posture remains relaxed.
+Weight naturally shifts onto one leg.
 
-Weight naturally settles onto one leg.
-
-Breathing remains visible.
+Natural breathing continues.
 
 ---
 
 ## PHASE 4 — SIDE ROTATION
 
-Remaining in place, she slowly rotates her upper body approximately 60–90 degrees toward whichever side appears most natural.
+Remaining in place, she slowly rotates her upper body approximately 60–90 degrees.
 
-This is a relaxed torso rotation.
+Her feet remain comfortably planted.
 
-Not a spin.
+The shoulders, torso and hips rotate together naturally.
 
-Not a runway turn.
+One hand may briefly rest near the waist.
 
-Not a full-body pivot.
+Movement remains slow and relaxed.
 
-Her feet remain planted naturally.
-
-Her shoulders, hips and torso rotate together with realistic biomechanics.
-
-One hand may naturally rest near the waist or hip.
-
-The other arm hangs comfortably.
-
-As she turns, the clothing naturally reveals:
+The rotation naturally reveals:
 
 - Side silhouette
 - Waist fit
 - Hip contour
 - Fabric drape
 - Garment length
-- Side construction
-- Partial rear garment details
-
-Movement remains slow and fluid.
+- Side construction details
 
 ---
 
 ## PHASE 5 — SIDE HOLD
 
-She comfortably holds the side profile for approximately one second.
-
-She never freezes.
+She briefly pauses.
 
 Visible breathing.
 
-Tiny balance corrections.
-
 Gentle body sway.
 
-Natural shoulder relaxation.
+Small balance adjustments.
 
-She briefly turns her head toward the camera.
+She casually glances toward the camera.
 
-The glance feels effortless and friendly.
-
-A soft smile naturally appears.
-
-The smile lasts briefly before fading.
+A brief soft smile may naturally appear before fading.
 
 ---
 
-## PHASE 6 — RETURN TO FRONT
+## PHASE 6 — RETURN
 
 She slowly rotates back toward the camera.
 
-Movement remains continuous.
+Movement remains smooth.
 
-Weight transfers naturally back to the original stance.
+She comfortably returns to her original stance.
 
-Her shoulders relax.
-
-She settles into the original forward-facing position.
-
-The final framing closely matches Image 1.
-
-She naturally pauses for a brief moment.
+The animation ends in approximately the same framing and posture as it began.
 
 ---
 
@@ -223,250 +180,175 @@ Natural posture.
 
 Relaxed shoulders.
 
-Visible breathing.
+Comfortable stance.
 
-Subtle hip movement.
+Gentle hip movement.
 
 Natural weight transfer.
 
-Small balance corrections.
+Relaxed hands.
 
-Relaxed fingers.
-
-Comfortable stance.
-
-No rigid posing.
-
-No fashion-model behavior.
+No exaggerated posing.
 
 ---
 
-# FACIAL PERFORMANCE
+# FACIAL EXPRESSIONS
 
-Expressions evolve naturally.
+Expressions change naturally.
 
-The subject never maintains a constant smile.
+Beginning:
 
-Opening:
-
-- Neutral expression
+- Calm expression
 - Relaxed lips
-- Calm eyes
-- Comfortable confidence
+- Comfortable eye contact
 
 During clothing touch:
 
-- Brief genuine smile
-- Slight cheek movement
-- Soft eye warmth
+- Brief natural smile
 
-After releasing the clothing:
+Afterward:
 
-- Smile naturally fades
-- Neutral relaxed expression
+- Smile fades naturally
 
-During torso rotation:
+During rotation:
 
-- Calm expression
-- Comfortable confidence
+- Relaxed expression
 
-During side glance:
+Side glance:
 
 - Brief warm smile
-- Friendly eye contact
-- Natural expression
 
-Return:
+Ending:
 
 - Neutral or soft smile
-- Relaxed face
 
-Avoid:
-
-- Frozen smile
-- Constant grin
-- Overacting
-- Exaggerated expressions
+Avoid exaggerated facial expressions.
 
 ---
 
-# MICRO HUMAN MOVEMENTS
+# NATURAL MOVEMENT
 
 Throughout the animation:
 
 - Visible breathing
 - Occasional blinking
-- Tiny eye refocusing
-- Natural head stabilization
+- Small eye movements
+- Tiny posture corrections
 - Gentle shoulder relaxation
-- Small balance corrections
-- Subtle finger movement
-- Continuous organic motion
+- Continuous natural motion
 
-Never appear robotic.
-
-Never freeze.
+The subject should never appear stiff.
 
 ---
 
 # HAIR
 
-Hair reacts naturally to body movement.
+Hair moves naturally with body motion.
 
-Maintain exactly:
+Maintain a consistent hairstyle, color and overall appearance.
 
-- Color
-- Texture
-- Volume
-- Length
-- Style
-
-Only subtle secondary movement.
-
-No floating strands.
-
-No unrealistic simulation.
+Movement remains subtle.
 
 ---
 
-# FABRIC PHYSICS
+# CLOTHING
 
-The clothing behaves according to its actual material.
+The clothing follows realistic fabric behavior.
 
-Generate:
+Include:
 
 - Natural folds
 - Gravity
-- Fabric tension
-- Compression
-- Slight inertia during turning
-- Realistic draping
-- Smooth settling after movement
+- Gentle movement
+- Realistic drape
+- Smooth settling after rotation
 
-Heavy fabrics settle more slowly.
-
-Light fabrics move more freely.
-
-Never produce:
-
-- Clipping
-- Floating fabric
-- Rigid cloth
-- Unrealistic deformation
+Avoid clipping or unrealistic deformation.
 
 ---
 
 # LIGHTING
 
-Preserve Image 1 lighting exactly.
+Maintain lighting consistent with Image 1.
 
-Maintain:
+Preserve:
 
 - Light direction
 - Exposure
-- White balance
-- Color temperature
-- Shadow softness
+- Color balance
+- Soft shadows
 
-Lighting responds naturally as the body rotates.
-
-Do not relight the subject.
-
-Do not introduce cinematic lighting.
+Lighting naturally follows body orientation without changing the overall scene.
 
 ---
 
-# SKIN PRESERVATION
+# APPEARANCE
 
-Preserve all visible skin exactly.
+Maintain consistent skin appearance throughout the clip.
 
-Previously hidden skin revealed during rotation must:
+Newly visible areas should naturally match the existing appearance.
 
-- Match existing skin tone.
-- Match existing skin texture.
-
-Do not generate:
+Avoid generating:
 
 - Tattoos
+- Body markings
 - Piercings
-- Body paint
-- Scars
-- Birthmarks
-- Freckles
-- Decorative markings
-- Ink of any kind
-
-Previously unseen skin must remain clean and fully consistent with the visible skin.
+- Decorative paint
+- Visible artifacts
 
 ---
 
-# VISUAL QUALITY
+# IMAGE QUALITY
 
 Ultra-photorealistic.
 
-Authentic smartphone video.
+Natural smartphone recording.
 
-Natural motion blur.
+Authentic motion blur.
 
-Professional photographic rendering.
+Realistic skin detail.
 
-True camera dynamic range.
+Natural hair movement.
 
-Visible skin microtexture.
-
-Natural fabric detail.
-
-Natural hair detail.
-
-No CGI appearance.
+Natural fabric movement.
 
 No AI artifacts.
 
 No beauty filters.
 
-No skin smoothing.
+No excessive smoothing.
 
-No plastic appearance.
-
-No stylization.
+No stylized rendering.
 
 ---
 
 # TIMING
 
-Opening stance: approximately 0.5 seconds.
+Approach: ~2 seconds.
 
-Approach and clothing touch: approximately 2 seconds.
+Clothing touch: ~1 second.
 
-Step back: approximately 1 second.
+Step back: ~1 second.
 
-Torso rotation: approximately 1.5 seconds.
+Rotation: ~1.5 seconds.
 
-Side hold and glance: approximately 1.5 seconds.
+Side hold: ~1 second.
 
-Return to front: approximately 1 second.
+Return: ~1.5 seconds.
 
-Motion remains continuous throughout.
-
-No freezing.
-
-No looping.
+Continuous motion throughout.
 
 ---
 
 # RESTRICTIONS
 
-No audio.
+Silent video.
 
 No speech.
 
 No music.
 
-No ambient sound.
-
 No subtitles.
-
-No captions.
 
 No text.
 
@@ -478,22 +360,16 @@ No UI.
 
 No visual effects.
 
-No 180° turn.
+No full-body spin.
 
-No 360° rotation.
+No runway presentation.
 
-No runway walk.
-
-No fashion show posing.
-
-No influencer posing clichés.
-
-No exaggerated dance.
+No exaggerated gestures.
 
 ---
 
 # FINAL RESULT
 
-Produce a hyper-realistic silent POV smartphone video in which the subject naturally approaches the camera, briefly touches a clothing detail, steps back, slowly rotates approximately 60–90 degrees to present the outfit from the side, briefly glances back toward the camera with a warm natural smile, and smoothly returns to the original forward-facing position.
+Create a natural smartphone-style video where the subject casually approaches the camera, briefly touches a clothing detail, steps back, slowly rotates to present the outfit from the side, briefly glances toward the camera with a relaxed smile, and comfortably returns to the initial position.
 
-Identity, clothing, lighting, environment, framing and overall appearance remain perfectly consistent with Image 1 throughout the entire animation, making the result indistinguishable from a real casual smartphone recording.
+The subject's appearance, outfit, lighting and environment remain visually consistent throughout the animation, creating a realistic and natural presentation.
