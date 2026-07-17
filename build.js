@@ -37,11 +37,16 @@ function esc(s) {
     .replace(/>/g, '&gt;');
 }
 
+function escAttr(s) {
+  return esc(s).replace(/"/g, '&quot;');
+}
+
 function tagBadge(tag) {
   const map = {
     img:  ['tag-img',  'Imagem'],
     vid:  ['tag-vid',  'Vídeo'],
     json: ['tag-json', 'JSON'],
+    beta: ['tag-beta', 'BETA'],
   };
   const [cls, label] = map[tag] || ['', tag];
   return `<span class="tag ${cls}">${label}</span>`;
@@ -50,12 +55,16 @@ function tagBadge(tag) {
 function buildCard(p, id) {
   const { meta, body } = p;
   const pid = `p${id}`;
+  const familyBadge = meta.family ? `<span class="tag tag-family">#${meta.family}</span>` : '';
   const badges      = meta.tags.map(tagBadge).join('\n        ');
   const inputBadges = meta.inputs.map(i => `<span class="input-badge">${i}</span>`).join('\n        ');
+  const searchText  = [meta.title, meta.desc, meta.family ? `#${meta.family}` : '', meta.tags.join(' ')]
+    .join(' ').toLowerCase();
   return `
-  <div class="card" data-type="${meta.type}">
+  <div class="card" data-type="${meta.type}" data-search="${escAttr(searchText)}">
     <div class="card-header">
       <div class="card-meta">
+        ${familyBadge}
         ${badges}
       </div>
       <div class="card-title">${meta.title}</div>
@@ -102,6 +111,10 @@ function buildHtml(imgCards, vidCards) {
       --tag-vid-text: #818cf8;
       --tag-json: #2a1a1a;
       --tag-json-text: #fb923c;
+      --tag-beta: #3a1a2a;
+      --tag-beta-text: #f472b6;
+      --tag-family: #26262c;
+      --tag-family-text: #a1a1aa;
     }
 
     body {
@@ -154,6 +167,48 @@ function buildHtml(imgCards, vidCards) {
     .tab:hover { border-color: var(--accent); color: var(--text); }
     .tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
 
+    /* ── SEARCH ── */
+    .search-wrap {
+      display: flex;
+      justify-content: center;
+      padding: 16px 24px 0;
+    }
+    .search-box {
+      position: relative;
+      width: 100%;
+      max-width: 420px;
+    }
+    .search-box svg {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 16px;
+      color: var(--muted);
+      pointer-events: none;
+    }
+    .search-box input {
+      width: 100%;
+      padding: 10px 14px 10px 38px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      font-size: 0.85rem;
+      outline: none;
+      transition: border-color .2s;
+    }
+    .search-box input::placeholder { color: var(--muted); }
+    .search-box input:focus { border-color: var(--accent); }
+    .search-empty {
+      display: none;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      padding: 48px 24px;
+    }
+
     /* ── GRID ── */
     .grid {
       display: grid;
@@ -197,6 +252,8 @@ function buildHtml(imgCards, vidCards) {
     .tag-img  { background: var(--tag-img);  color: var(--tag-img-text); }
     .tag-vid  { background: var(--tag-vid);  color: var(--tag-vid-text); }
     .tag-json { background: var(--tag-json); color: var(--tag-json-text); }
+    .tag-beta { background: var(--tag-beta); color: var(--tag-beta-text); }
+    .tag-family { background: var(--tag-family); color: var(--tag-family-text); font-family: 'SF Mono', 'Fira Code', monospace; }
 
     .card-title {
       font-size: 1rem;
@@ -299,33 +356,67 @@ function buildHtml(imgCards, vidCards) {
   <button class="tab" onclick="filter('vid', this)">Vídeo</button>
 </div>
 
+<div class="search-wrap">
+  <div class="search-box">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+    <input id="search" type="text" placeholder="Buscar prompts..." oninput="applyFilters()" />
+  </div>
+</div>
+
 <!-- ══════════════ IMAGEM ══════════════ -->
 <div class="section-label" id="label-img">Imagem</div>
-<div class="grid">
+<div class="grid" id="grid-img">
 ${imgCards}
 </div>
 
 <!-- ══════════════ VÍDEO ══════════════ -->
 <div class="section-label" id="label-vid">Vídeo — Animações POV</div>
-<div class="grid">
+<div class="grid" id="grid-vid">
 ${vidCards}
 </div>
 
+<div class="search-empty" id="search-empty">Nenhum prompt encontrado.</div>
+
 <script>
+  let currentType = 'all';
+
   function filter(type, btn) {
+    currentType = type;
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
     btn.classList.add('active');
+    applyFilters();
+  }
+
+  function applyFilters() {
+    const query = document.getElementById('search').value.trim().toLowerCase();
+    const terms = query.split(/\s+/).filter(Boolean);
+
+    let imgVisible = 0;
+    let vidVisible = 0;
 
     document.querySelectorAll('.card').forEach(card => {
-      if (type === 'all' || card.dataset.type === type) {
+      const typeMatch = currentType === 'all' || card.dataset.type === currentType;
+      const searchMatch = terms.every(t => card.dataset.search.includes(t));
+
+      if (typeMatch && searchMatch) {
         delete card.dataset.hidden;
+        if (card.dataset.type === 'img') imgVisible++;
+        if (card.dataset.type === 'vid') vidVisible++;
       } else {
         card.dataset.hidden = '1';
       }
     });
 
-    document.getElementById('label-img').style.display = (type === 'vid') ? 'none' : '';
-    document.getElementById('label-vid').style.display = (type === 'img') ? 'none' : '';
+    const showImgSection = currentType !== 'vid' && imgVisible > 0;
+    const showVidSection = currentType !== 'img' && vidVisible > 0;
+
+    document.getElementById('label-img').style.display = showImgSection ? '' : 'none';
+    document.getElementById('grid-img').style.display = showImgSection ? '' : 'none';
+    document.getElementById('label-vid').style.display = showVidSection ? '' : 'none';
+    document.getElementById('grid-vid').style.display = showVidSection ? '' : 'none';
+
+    document.getElementById('search-empty').style.display =
+      (imgVisible === 0 && vidVisible === 0) ? '' : 'none';
   }
 
   function copyText(id, btn) {

@@ -1,9 +1,10 @@
 ---
-title: Troca de Roupa
+title: Troca de Roupa v1
 desc: Mantém o avatar da Imagem 1 intacto e aplica a roupa da Imagem 2 com física de tecido realista. Lógica automática para roupas justas ou largas.
 type: img
 tags: img
 inputs: Img 1 — Avatar base | Img 2 — Roupa referência
+family: 002
 order: 3
 ---
 Use Image 1 as the BASE avatar image.

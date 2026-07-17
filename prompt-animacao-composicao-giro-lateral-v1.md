@@ -1,11 +1,12 @@
 ---
-title: Animação — Composição Giro Lateral
+title: Animação — Composição Giro Lateral v1
 desc: Avatar já com roupa (Img 1). A modelo gira levemente para o lado (não 360°) para mostrar o caimento e silhueta da roupa de perfil, depois retorna à frente.
 type: vid
 tags: vid
 inputs: Img 1 — Avatar com roupa
 video: videos/Animação - Composição Giro Lateral.mp4
-order: 13
+family: 008
+order: 15
 ---
 Use Image 1 as the ONLY reference — preserve the subject's identity, clothing, pose, environment, and lighting exactly as shown.
 

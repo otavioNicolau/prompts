@@ -1,11 +1,12 @@
 ---
-title: Animação CTA — Dedo Apontando
+title: Animação CTA v1 — Dedo Apontando
 desc: Prompt estruturado em JSON. A modelo se inclina em direção à câmera com sorriso vendedor e aponta repetidamente o dedo indicador para baixo (CTA / link). 8s · 9:16 · sem fala.
 type: vid
 tags: json vid
 inputs: Img 1 — Avatar
 video: videos/Animação CTA — Dedo Apontando.mp4
-order: 6
+family: 006
+order: 11
 ---
 ```json
 {

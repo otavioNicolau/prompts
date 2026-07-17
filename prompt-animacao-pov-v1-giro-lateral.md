@@ -1,11 +1,12 @@
 ---
-title: Animação POV v3 — Aproximação + Detalhe + Giro Lateral
+title: Animação POV v1 — Aproximação + Detalhe + Giro Lateral
 desc: Igual ao v1 com mais movimentos: aproxima, toca detalhe, recua e gira o tronco lateralmente (~60–90°) para mostrar a roupa de lado. Sem 360°.
 type: vid
 tags: vid
 inputs: Img 1 — Avatar com roupa
 video: videos/Animação POV v3 — Aproximação + Detalhe + Giro Lateral.mp4
-order: 14
+family: 005
+order: 9
 ---
 Animate the subject as a REAL person presenting clothing in a POV-style video with extended movement to show the outfit from the side.
 

@@ -1,11 +1,12 @@
 ---
-title: Animação POV v2 — Gesto de Cabelo
+title: Animação POV v1 — Gesto de Cabelo
 desc: Igual ao v1, com adição de um gesto casual de passar a mão no cabelo (~1 segundo) após a sequência principal de movimentos.
 type: vid
 tags: vid
 inputs: Img 1 — Avatar com roupa
 video: videos/Animação POV v2.mp4
-order: 5
+family: 004
+order: 7
 ---
 Animate the subject as a REAL person presenting clothing in a POV-style video.
 

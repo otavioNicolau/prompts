@@ -1,11 +1,12 @@
 ---
-title: Animação CTA — Beijo
+title: Animação CTA v1 — Beijo
 desc: A modelo se aproxima da câmera, sopra um beijo natural e expressivo diretamente para a lente. Gesto caloroso e genuíno com expressão facial progressiva.
 type: vid
 tags: vid
 inputs: Img 1 — Avatar
 video: videos/Animação CTA — Beijo.mp4
-order: 9
+family: 007
+order: 13
 ---
 Animate the subject as a REAL person delivering a natural, charming kiss-blow gesture directly to the camera.
 

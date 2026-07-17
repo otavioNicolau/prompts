@@ -5,7 +5,8 @@ type: vid
 tags: vid
 inputs: Img 1 — Avatar com roupa
 video: videos/Animação POV v1.mp4
-order: 4
+family: 003
+order: 5
 ---
 Animate the subject as a REAL person presenting clothing in a POV-style video.
 

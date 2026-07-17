@@ -22,6 +22,10 @@
       --tag-vid-text: #818cf8;
       --tag-json: #2a1a1a;
       --tag-json-text: #fb923c;
+      --tag-beta: #3a1a2a;
+      --tag-beta-text: #f472b6;
+      --tag-family: #26262c;
+      --tag-family-text: #a1a1aa;
     }
 
     body {
@@ -47,9 +51,13 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-    .hero p { margin-top: 12px; color: var(--muted); font-size: 1.05rem; }
+    .hero p {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
 
-    /* ── TABS ── */
+    /* ── NAV TABS ── */
     .tabs {
       display: flex;
       gap: 8px;
@@ -69,6 +77,48 @@
     }
     .tab:hover { border-color: var(--accent); color: var(--text); }
     .tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+    /* ── SEARCH ── */
+    .search-wrap {
+      display: flex;
+      justify-content: center;
+      padding: 16px 24px 0;
+    }
+    .search-box {
+      position: relative;
+      width: 100%;
+      max-width: 420px;
+    }
+    .search-box svg {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 16px;
+      color: var(--muted);
+      pointer-events: none;
+    }
+    .search-box input {
+      width: 100%;
+      padding: 10px 14px 10px 38px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      font-size: 0.85rem;
+      outline: none;
+      transition: border-color .2s;
+    }
+    .search-box input::placeholder { color: var(--muted); }
+    .search-box input:focus { border-color: var(--accent); }
+    .search-empty {
+      display: none;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      padding: 48px 24px;
+    }
 
     /* ── GRID ── */
     .grid {
@@ -91,11 +141,17 @@
       transition: border-color .2s, transform .2s;
     }
     .card:hover { border-color: #4a4a5a; transform: translateY(-2px); }
-    .card[data-hidden] { display: none; }
 
-    .card-header { padding: 20px 20px 14px; border-bottom: 1px solid var(--border); }
-    .card-meta   { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
-
+    .card-header {
+      padding: 20px 20px 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
     .tag {
       font-size: 0.7rem;
       font-weight: 600;
@@ -107,11 +163,27 @@
     .tag-img  { background: var(--tag-img);  color: var(--tag-img-text); }
     .tag-vid  { background: var(--tag-vid);  color: var(--tag-vid-text); }
     .tag-json { background: var(--tag-json); color: var(--tag-json-text); }
+    .tag-beta { background: var(--tag-beta); color: var(--tag-beta-text); }
+    .tag-family { background: var(--tag-family); color: var(--tag-family-text); font-family: 'SF Mono', 'Fira Code', monospace; }
 
-    .card-title { font-size: 1rem; font-weight: 600; line-height: 1.3; }
-    .card-desc  { margin-top: 6px; font-size: 0.83rem; color: var(--muted); line-height: 1.55; }
+    .card-title {
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+    .card-desc {
+      margin-top: 6px;
+      font-size: 0.83rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
 
-    .inputs { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
+    .inputs {
+      display: flex;
+      gap: 6px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
     .input-badge {
       font-size: 0.72rem;
       padding: 2px 8px;
@@ -121,23 +193,11 @@
       color: var(--muted);
     }
 
-    /* ── VIDEO ── */
-    .card-video {
-      padding: 12px 16px;
-      border-bottom: 1px solid var(--border);
+    .code-wrap {
+      flex: 1;
+      position: relative;
       background: #0a0a0c;
-      display: flex;
-      justify-content: center;
     }
-    .card-video video {
-      max-height: 240px;
-      max-width: 100%;
-      border-radius: 8px;
-      display: block;
-      object-fit: contain;
-    }
-
-    .code-wrap { flex: 1; background: #0a0a0c; }
     .code-scroll {
       max-height: 260px;
       overflow-y: auto;
@@ -176,9 +236,11 @@
       cursor: pointer;
       transition: all .18s;
     }
-    .copy-btn:hover  { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .copy-btn:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
     .copy-btn.copied { background: #16a34a22; border-color: #16a34a; color: #4ade80; }
     .copy-btn svg { width: 14px; height: 14px; }
+
+    .card[data-hidden] { display: none; }
 
     .section-label {
       max-width: 1280px;
@@ -205,95 +267,4139 @@
   <button class="tab" onclick="filter('vid', this)">Vídeo</button>
 </div>
 
-<div class="section-label" id="label-img">Imagem</div>
-<div class="grid" id="grid-img"></div>
+<div class="search-wrap">
+  <div class="search-box">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+    <input id="search" type="text" placeholder="Buscar prompts..." oninput="applyFilters()" />
+  </div>
+</div>
 
+<!-- ══════════════ IMAGEM ══════════════ -->
+<div class="section-label" id="label-img">Imagem</div>
+<div class="grid" id="grid-img">
+
+  <div class="card" data-type="img" data-search="composição de cena mantém a pessoa da imagem 1 100% intacta (rosto, corpo, pose, roupa) e troca apenas o cenário/fundo pelo ambiente da imagem 2. #001 img">
+    <div class="card-header">
+      <div class="card-meta">
+        <span class="tag tag-family">#001</span>
+        <span class="tag tag-img">Imagem</span>
+      </div>
+      <div class="card-title">Composição de Cena</div>
+      <div class="card-desc">Mantém a pessoa da Imagem 1 100% intacta (rosto, corpo, pose, roupa) e troca apenas o cenário/fundo pelo ambiente da Imagem 2.</div>
+      <div class="inputs">
+        <span class="input-badge">Img 1 — Pessoa (mantém intacta)</span>
+        <span class="input-badge">Img 2 — Cenário/Ambiente (referência)</span>
+      </div>
+    </div>
+    <div class="code-wrap">
+      <div class="code-scroll"><pre id="p1">## TASK TYPE: BACKGROUND REPLACEMENT ONLY (NOT A SUBJECT SWAP)
+
+This is a background/scenario replacement task, nothing else.
+The person in Image 1 must remain 100% unchanged — same face, same body, same pose, same clothing, same expression, same skin, same hair.
+Only the environment behind her changes, replaced by the environment from Image 2.
+
+Use the first image as the ONLY source for the person — face, body, pose, clothing, expression, everything.
+Use the second image ONLY as an environment/background reference — extract the location, lighting, and depth, nothing else.
+
+This must behave like a CUTOUT-AND-PASTE compositing operation, NOT a full re-render.
+Preserve the pixels of the person from Image 1 as close to unchanged as physically possible — do not regenerate, redraw, re-light, or reinterpret her face, skin, or body.
+Only the pixels OUTSIDE her silhouette (the background) should be newly generated.
+If forced to choose between a more "realistic" relighting of the person and preserving her exact features, ALWAYS choose preserving her exact features.
+
+---
+
+## PERSON LOCK (ABSOLUTE — IMAGE 1)
+
+Do NOT change, in any way:
+- Face
+- Facial expression
+- Skin tone
+- Hair
+- Body shape and proportions
+- Pose
+- Clothing
+- Framing/crop of the person
+
+BODY PROPORTIONS (CRITICAL LOCK):
+- Preserve the exact bust, waist, and thigh proportions from Image 1
+- Do NOT slim, enlarge, reshape, or "idealize" any body part
+- Do NOT make her thinner, curvier, taller, or otherwise different from the source photo
+- Her silhouette must measure the same as in Image 1
+
+The person must look like the exact same photo, just placed in a different environment.
+
+---
+
+## ENVIRONMENT EXTRACTION (IMAGE 2)
+
+Extract ONLY:
+- Location/setting
+- Background elements
+- Lighting direction and color temperature
+- Depth and spatial layout
+
+If a person is visible in Image 2, she is IRRELEVANT — ignore her face, body, and pose completely.
+Treat the space she occupies as open background and remove her entirely from the reference.
+Do NOT let any trace of her (face, hair, body, skin tone) transfer into the final image.
+
+---
+
+## COMPOSITING RULES
+
+- Place the person from Image 1 into the environment from Image 2 like a cutout layer, not a repaint
+- Keep the person's original pose, angle, and framing exactly as in Image 1 — do NOT reangle or reposition her to match anyone in Image 2
+- Do NOT redraw her face, skin, or body to "match" the new lighting — only add a subtle, thin rim of ambient color/shadow at the edges where she meets the new background
+- Add natural contact shadows where she meets the new floor/background
+- No warping, no resizing, no reshaping, no distortion of the person
+- Her facial features, proportions, and skin texture must be pixel-for-pixel the same person as Image 1 — not just "similar" or "inspired by"
+
+---
+
+## STRICT RULES
+
+- Do NOT change anything about the person from Image 1 — this is the most important rule
+- Do NOT re-render, re-light, retouch, or "improve" the person's face, skin, or body — treat her as a locked layer
+- Do NOT use the face, body, or pose of anyone shown in Image 2
+- Do NOT blend identities
+- Do NOT add tattoos, piercings, or ink anywhere on the skin
+- Do NOT stylize
+- Do NOT add text, UI, logos, or watermarks
+
+---
+
+## RENDER QUALITY (BACKGROUND + SEAM ONLY — NOT THE PERSON)
+
+These rules apply to the newly generated background and the seam where it meets the person — they do NOT authorize any change to the person herself:
+- Ultra realistic photographic lighting on the environment
+- Directional light source matching the new environment
+- Soft natural shadow falloff on the ground/background
+- Natural depth separation between subject and background
+- Subtle depth of field (very light, realistic)
+- True camera dynamic range
+- No flat lighting
+- No overexposure
+- No CGI look on the background
+- Real camera realism
+- Mild natural contrast
+
+---
+
+## FINAL RESULT
+
+A realistic photo where:
+- The person is 100% identical to Image 1, pixel-for-pixel where possible — face, body, pose, clothing, expression, and exact bust/waist/thigh proportions unchanged
+- The background/environment comes from Image 2
+- Only the background and the thin seam around the person show new lighting — the person herself is untouched
+- No trace of any other person from Image 2 appears anywhere in the final image
+- The result looks attractive and professional purely through photographic quality — lighting, framing, environment, and sharpness — never by altering her body proportions</pre></div>
+    </div>
+    <div class="card-footer">
+      <button class="copy-btn" onclick="copyText('p1', this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copiar
+      </button>
+    </div>
+  </div>
+
+  <div class="card" data-type="img" data-search="composição de cena v2 versão aprimorada do v1 com isolamento de identidade mais rígido — mantém a pessoa da imagem 1 100% intacta e troca apenas o cenário/fundo pelo ambiente da imagem 2. #001 img beta">
+    <div class="card-header">
+      <div class="card-meta">
+        <span class="tag tag-family">#001</span>
+        <span class="tag tag-img">Imagem</span>
+        <span class="tag tag-beta">BETA</span>
+      </div>
+      <div class="card-title">Composição de Cena v2</div>
+      <div class="card-desc">Versão aprimorada do v1 com isolamento de identidade mais rígido — mantém a pessoa da Imagem 1 100% intacta e troca apenas o cenário/fundo pelo ambiente da Imagem 2.</div>
+      <div class="inputs">
+        <span class="input-badge">Img 1 — Pessoa (mantém intacta)</span>
+        <span class="input-badge">Img 2 — Cenário/Ambiente (referência)</span>
+      </div>
+    </div>
+    <div class="code-wrap">
+      <div class="code-scroll"><pre id="p2"># BACKGROUND REPLACEMENT ONLY (NOT A SUBJECT SWAP)
+
+## OBJECTIVE
+
+Replace only the background/environment of **Image 1** with the environment from **Image 2**.
+
+The person shown in **Image 1** is the only subject of the final image and must remain unchanged.
+
+Image 2 is **not** a reference for the person. It is used **exclusively** as an environmental reference.
+
+---
+
+# IMAGE ROLE DEFINITIONS
+
+## Image 1 — SUBJECT (LOCKED)
+
+Use Image 1 as the exclusive source for:
+
+* Face
+* Identity
+* Facial structure
+* Facial expression
+* Hair
+* Skin tone
+* Skin texture
+* Makeup
+* Body shape
+* Body proportions
+* Pose
+* Clothing
+* Accessories
+* Framing
+* Camera angle
+* Perspective
+
+Nothing about the subject should be redesigned, interpreted, beautified, or replaced.
+
+---
+
+## Image 2 — ENVIRONMENT ONLY
+
+Use Image 2 exclusively for:
+
+* Location
+* Background
+* Architecture
+* Landscape
+* Objects behind the subject
+* Lighting direction
+* Lighting color
+* Atmospheric perspective
+* Environmental depth
+* Ambient color
+* Overall scene mood
+
+Ignore everything else.
+
+If Image 2 contains one or more people, completely disregard them.
+
+Do not copy or reference:
+
+* Face
+* Hair
+* Body
+* Pose
+* Clothing
+* Skin tone
+* Identity
+* Accessories
+
+Treat every person visible in Image 2 as if they never existed.
+
+The final image must contain only the subject from Image 1.
+
+---
+
+# ABSOLUTE SUBJECT LOCK
+
+The person from Image 1 must remain visually identical.
+
+Do NOT modify:
+
+* Face
+* Eyes
+* Eyebrows
+* Eyelashes
+* Nose
+* Lips
+* Teeth
+* Jawline
+* Chin
+* Ears
+* Neck
+* Hair
+* Hairstyle
+* Hair color
+* Skin tone
+* Skin texture
+* Freckles
+* Moles
+* Birthmarks
+* Makeup
+* Expression
+* Head angle
+* Pose
+* Hand position
+* Finger position
+* Body shape
+* Body proportions
+* Clothing
+* Clothing wrinkles
+* Accessories
+* Jewelry
+* Crop
+* Camera perspective
+
+The subject must remain the exact same person shown in Image 1.
+
+---
+
+# BODY GEOMETRY LOCK
+
+Preserve the exact body geometry from Image 1.
+
+Do NOT:
+
+* Slim the body
+* Increase curves
+* Reduce curves
+* Enlarge the bust
+* Reduce the bust
+* Modify the waist
+* Modify hips
+* Modify thighs
+* Modify legs
+* Modify shoulders
+* Modify arms
+* Lengthen limbs
+* Shorten limbs
+* Make the subject taller
+* Make the subject shorter
+* Change posture
+* Change body weight
+* Idealize proportions
+
+Maintain the exact silhouette from Image 1.
+
+---
+
+# IDENTITY PRESERVATION PRIORITY
+
+If there is any conflict between matching the new environment and preserving the subject, always prioritize preserving the subject exactly as shown in Image 1.
+
+Identity preservation is more important than lighting consistency.
+
+Pose preservation is more important than environmental adaptation.
+
+Body geometry preservation is more important than compositional optimization.
+
+---
+
+# COMPOSITING BEHAVIOR
+
+Treat the subject from Image 1 as a locked foreground layer composited into the environment from Image 2.
+
+This is a compositing task, not a character recreation.
+
+The subject should appear as though she was photographed in the new environment while remaining visually identical to the original.
+
+Do NOT:
+
+* Reconstruct the face
+* Reinterpret facial features
+* Redesign the body
+* Generate a new version of the subject
+* Replace identity
+* Blend identities
+
+---
+
+# LIGHTING ADAPTATION
+
+Only adapt what is necessary to integrate the subject naturally into the new environment.
+
+Allowed adjustments:
+
+* Very subtle ambient color influence
+* Thin edge lighting when physically appropriate
+* Natural contact shadows
+* Realistic ground shadow
+* Slight environmental reflections if physically plausible
+
+Do NOT:
+
+* Relight the face
+* Resculpt facial shadows
+* Change skin appearance
+* Change skin color
+* Smooth skin
+* Add beauty lighting
+* Modify facial contrast
+* Change exposure specifically on the subject
+
+Preserve the original appearance of the subject.
+
+---
+
+# BEAUTY LOCK
+
+Do NOT perform any beauty enhancement.
+
+Specifically prohibit:
+
+* Skin smoothing
+* Skin retouching
+* Beauty filters
+* Airbrushing
+* Face reshaping
+* Eye enlargement
+* Lip enhancement
+* Nose refinement
+* Jawline refinement
+* Cheekbone enhancement
+* Makeup enhancement
+* Face symmetry correction
+* Age modification
+* Glamour retouching
+
+The subject must remain naturally identical to Image 1.
+
+---
+
+# BACKGROUND RECONSTRUCTION
+
+Generate a new background based on Image 2 while preserving realistic photographic quality.
+
+Requirements:
+
+* Natural perspective
+* Correct depth
+* Realistic lighting
+* Proper scale
+* Accurate environmental geometry
+* Real camera appearance
+* Natural shadows
+* Natural atmospheric depth
+
+Remove any people originally present in Image 2.
+
+Replace them with coherent background reconstruction.
+
+No traces of those people should remain.
+
+---
+
+# SEAM INTEGRATION
+
+Blend only the boundary where the subject meets the new environment.
+
+Allowed:
+
+* Soft edge refinement
+* Natural contact shadows
+* Ambient edge color
+* Minimal integration adjustments
+
+Do not modify any interior portion of the subject.
+
+Only the immediate border between subject and background may be adapted.
+
+---
+
+# PHOTOGRAPHIC QUALITY
+
+The generated environment should have:
+
+* Ultra-realistic photography
+* Natural lighting
+* High dynamic range
+* Accurate perspective
+* Realistic shadows
+* Subtle depth of field
+* Natural contrast
+* Real-world color response
+* No CGI appearance
+* No artificial textures
+* Professional photographic realism
+
+---
+
+# STRICT PROHIBITIONS
+
+Do NOT:
+
+* Change the subject
+* Replace the subject
+* Blend identities
+* Copy any facial feature from Image 2
+* Copy any body feature from Image 2
+* Copy pose from Image 2
+* Copy clothing from Image 2
+* Stylize the image
+* Cartoonize
+* Paint over the subject
+* Beautify the subject
+* Add tattoos
+* Add piercings
+* Add scars
+* Add accessories
+* Add makeup
+* Add text
+* Add logos
+* Add watermarks
+* Add UI elements
+
+---
+
+# FINAL RESULT
+
+Produce a realistic composite photograph in which:
+
+* The subject is unmistakably the exact same person from Image 1.
+* Facial identity is preserved with maximum possible fidelity.
+* Hair, skin, expression, clothing, pose, framing, and body geometry remain unchanged.
+* The silhouette matches Image 1 exactly.
+* The environment comes entirely from Image 2.
+* Any people originally present in Image 2 have been completely removed.
+* Only the environment and the immediate seam around the subject are newly generated.
+* The final image appears as a professionally photographed composite with seamless integration while preserving the subject's original identity above all else.</pre></div>
+    </div>
+    <div class="card-footer">
+      <button class="copy-btn" onclick="copyText('p2', this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copiar
+      </button>
+    </div>
+  </div>
+
+  <div class="card" data-type="img" data-search="troca de roupa v1 mantém o avatar da imagem 1 intacto e aplica a roupa da imagem 2 com física de tecido realista. lógica automática para roupas justas ou largas. #002 img">
+    <div class="card-header">
+      <div class="card-meta">
+        <span class="tag tag-family">#002</span>
+        <span class="tag tag-img">Imagem</span>
+      </div>
+      <div class="card-title">Troca de Roupa v1</div>
+      <div class="card-desc">Mantém o avatar da Imagem 1 intacto e aplica a roupa da Imagem 2 com física de tecido realista. Lógica automática para roupas justas ou largas.</div>
+      <div class="inputs">
+        <span class="input-badge">Img 1 — Avatar base</span>
+        <span class="input-badge">Img 2 — Roupa referência</span>
+      </div>
+    </div>
+    <div class="code-wrap">
+      <div class="code-scroll"><pre id="p3">Use Image 1 as the BASE avatar image.
+Use Image 2 ONLY as the clothing reference.
+
+TASK:
+Apply the clothing from Image 2 onto the avatar in Image 1.
+
+---
+
+## IMPORTANT RULES
+
+- Do NOT describe the clothing
+- Do NOT invent, redesign, or stylize anything
+- Replicate the clothing EXACTLY as shown in Image 2
+- Same color, fabric, cut, shape, and proportions
+- No creative interpretation
+
+---
+
+## FIT &amp; REALISM (VERY IMPORTANT)
+
+- Clothing must fit naturally on the avatar's body
+- Respect real human anatomy
+- Natural fabric tension, folds, and stretch
+- No floating, clipping, or distortion
+- Clothing must look realistically worn, not pasted
+
+---
+
+## LOWER BODY FIT LOGIC (CRITICAL)
+
+**If the lower-body clothing appears fitted or body-hugging in Image 2:**
+- Apply a close, snug fit to the avatar
+- Fabric follows the leg and hip contours naturally
+- Minimal looseness
+- Natural compression without exaggeration
+- Size appears accurate and proportional to the body
+
+**If the lower-body clothing appears loose, relaxed, or soft-fabric in Image 2:**
+- Preserve the loose fit exactly
+- Allow natural drape and spacing from the legs
+- No tightening
+- No reshaping
+- Fabric hangs naturally according to gravity
+
+Fit behavior must always follow the visual characteristics of Image 2.
+Never force tightness or looseness against the reference.
+
+---
+
+## AVATAR LOCK (CRITICAL)
+
+- Do NOT change face
+- Do NOT change body shape or proportions
+- Do NOT change skin tone
+- Do NOT add tattoos, piercings, or ink anywhere on the skin — especially the arms, shoulders, and shoulder blades, the most common area where AI mistakenly adds a mark
+- Any part of the skin NOT clearly visible in Image 1 (e.g. back of the upper arm, shoulder blade) must be rendered as plain, unmarked skin matching the visible skin tone — do not invent any tattoo, pattern, or mark in areas not shown in Image 1
+- Do NOT change hair
+- Do NOT change pose or expression
+- Do NOT change background
+- Do NOT beautify, retouch, or enhance
+
+---
+
+## LIGHTING &amp; SHADOW MATCH
+
+- Match original lighting perfectly
+- Preserve light direction and softness
+- Natural shadows between clothing and skin
+
+---
+
+## FINAL QUALITY
+
+- Ultra photorealistic
+- Looks like a real photo
+- No AI artifacts
+- High resolution
+- Clean, natural result
+
+---
+
+## EXCLUSIONS
+
+- No text
+- No logos
+- No watermarks
+- No filters
+- No cinematic effects
+- No stylization
+- No tattoos of any kind, anywhere on the body</pre></div>
+    </div>
+    <div class="card-footer">
+      <button class="copy-btn" onclick="copyText('p3', this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copiar
+      </button>
+    </div>
+  </div>
+
+  <div class="card" data-type="img" data-search="troca de roupa v2 versão expandida do troca-de-roupa com bloqueio de identidade e pele mais rígido — transfere apenas a roupa da imagem 2 para a pessoa da imagem 1, sem alterar rosto, corpo, pose, fundo ou iluminação. #002 img beta">
+    <div class="card-header">
+      <div class="card-meta">
+        <span class="tag tag-family">#002</span>
+        <span class="tag tag-img">Imagem</span>
+        <span class="tag tag-beta">BETA</span>
+      </div>
+      <div class="card-title">Troca de Roupa v2</div>
+      <div class="card-desc">Versão expandida do troca-de-roupa com bloqueio de identidade e pele mais rígido — transfere apenas a roupa da Imagem 2 para a pessoa da Imagem 1, sem alterar rosto, corpo, pose, fundo ou iluminação.</div>
+      <div class="inputs">
+        <span class="input-badge">Img 1 — Pessoa (mantém intacta)</span>
+        <span class="input-badge">Img 2 — Roupa referência</span>
+      </div>
+    </div>
+    <div class="code-wrap">
+      <div class="code-scroll"><pre id="p4"># CLOTHING TRANSFER ONLY (NOT A SUBJECT REPLACEMENT)
+
+## OBJECTIVE
+
+Transfer the clothing from **Image 2** onto the person shown in **Image 1**.
+
+The person in Image 1 must remain completely unchanged.
+
+Only the clothing is replaced.
+
+---
+
+# IMAGE ROLE DEFINITIONS
+
+## Image 1 — SUBJECT (LOCKED)
+
+Use Image 1 as the exclusive source for:
+
+* Face
+* Identity
+* Hair
+* Skin
+* Body shape
+* Body proportions
+* Pose
+* Expression
+* Hands
+* Legs
+* Feet
+* Background
+* Camera angle
+* Perspective
+* Framing
+* Lighting
+
+Nothing about the subject or the scene may be redesigned.
+
+---
+
+## Image 2 — CLOTHING ONLY
+
+Use Image 2 exclusively as the clothing reference.
+
+Replicate the clothing exactly as shown, including:
+
+* Garment type
+* Layering
+* Color
+* Pattern
+* Fabric
+* Material
+* Texture
+* Stitching
+* Shape
+* Cut
+* Length
+* Sleeves
+* Collar
+* Waistline
+* Fit
+* Wrinkles
+* Folds
+* Buttons
+* Zippers
+* Pockets
+* Belts
+* Fasteners
+* Accessories that are part of the clothing
+
+Do not reinterpret, redesign, simplify, or stylize any garment.
+
+---
+
+# CLOTHING ACCURACY
+
+Reproduce the clothing with maximum fidelity.
+
+Maintain:
+
+* Exact proportions
+* Exact silhouette
+* Exact construction
+* Exact fabric behavior
+* Exact layering
+* Exact placement on the body
+
+The clothing should appear to be the same outfit photographed on the person from Image 1.
+
+---
+
+# FIT BEHAVIOR
+
+The clothing must fit naturally according to the body of the subject while preserving the appearance of the original garment.
+
+If the garment is fitted in Image 2:
+
+* Maintain a fitted appearance.
+* Follow the body's contours naturally.
+* Preserve realistic fabric compression.
+* Do not exaggerate body shape.
+
+If the garment is loose in Image 2:
+
+* Preserve the loose silhouette.
+* Maintain natural drape.
+* Preserve realistic spacing from the body.
+* Do not tighten or reshape the garment.
+
+Fabric behavior must always match the visual characteristics of Image 2.
+
+---
+
+# FABRIC PHYSICS
+
+Generate realistic clothing physics.
+
+Include:
+
+* Natural folds
+* Realistic wrinkles
+* Fabric tension
+* Gravity
+* Compression points
+* Stretch where physically appropriate
+
+Do not produce:
+
+* Floating fabric
+* Clipping
+* Melting geometry
+* Impossible folds
+* Artificial stiffness
+
+---
+
+# SUBJECT LOCK
+
+The person from Image 1 must remain visually identical.
+
+Do NOT modify:
+
+* Face
+* Eyes
+* Nose
+* Lips
+* Jawline
+* Hair
+* Hairstyle
+* Skin tone
+* Skin texture
+* Makeup
+* Expression
+* Body proportions
+* Body geometry
+* Arms
+* Hands
+* Legs
+* Feet
+* Pose
+* Camera angle
+* Framing
+* Background
+
+Identity preservation has absolute priority.
+
+---
+
+# BEAUTY LOCK
+
+Do NOT perform any cosmetic enhancement.
+
+Specifically prohibit:
+
+* Skin smoothing
+* Airbrushing
+* Beauty filters
+* Face reshaping
+* Eye enlargement
+* Lip enhancement
+* Nose refinement
+* Jawline refinement
+* Makeup enhancement
+* Glamour retouching
+* Age modification
+
+The person must remain exactly as shown in Image 1.
+
+---
+
+# SKIN PRESERVATION
+
+Preserve all visible skin exactly as shown in Image 1.
+
+For skin that is newly revealed after the clothing transfer:
+
+* Continue the existing skin tone naturally.
+* Match the visible skin texture.
+* Keep the same lighting.
+
+Do not invent:
+
+* Tattoos
+* Piercings
+* Birthmarks
+* Freckles
+* Moles
+* Scars
+* Body paint
+* Ink
+* Skin decorations
+
+Previously unseen skin must appear as clean, natural skin consistent with the visible areas.
+
+---
+
+# LIGHTING
+
+Preserve the original lighting from Image 1.
+
+Maintain:
+
+* Light direction
+* Shadow softness
+* Exposure
+* White balance
+* Color temperature
+
+Generate only the shadows naturally produced by the transferred clothing.
+
+Do not relight the subject.
+
+---
+
+# PHOTOGRAPHIC QUALITY
+
+Produce a realistic photograph with:
+
+* Ultra photorealism
+* High resolution
+* Natural fabric detail
+* Accurate stitching
+* Clean edges
+* Realistic textures
+* Natural shadows
+* Professional photographic realism
+
+No AI artifacts.
+
+---
+
+# STRICT PROHIBITIONS
+
+Do NOT:
+
+* Change the person's identity
+* Change the face
+* Change body proportions
+* Change pose
+* Change expression
+* Change hair
+* Change background
+* Stylize the image
+* Redesign the clothing
+* Invent missing garment details
+* Add accessories not present in Image 2
+* Add tattoos
+* Add piercings
+* Add text
+* Add logos
+* Add watermarks
+* Add filters
+* Add cinematic effects
+
+---
+
+# FINAL RESULT
+
+Produce a realistic photograph where:
+
+* The person is unmistakably the exact same individual from Image 1.
+* The clothing matches Image 2 with maximum possible fidelity.
+* Fabric, fit, proportions, color, construction, and texture remain faithful to the reference.
+* The transferred clothing fits naturally according to realistic human anatomy.
+* The background, lighting, identity, body geometry, and overall appearance of the subject remain unchanged.
+* The final image appears as if the person from Image 1 was originally photographed wearing the outfit from Image 2.</pre></div>
+    </div>
+    <div class="card-footer">
+      <button class="copy-btn" onclick="copyText('p4', this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copiar
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ VÍDEO ══════════════ -->
 <div class="section-label" id="label-vid">Vídeo — Animações POV</div>
-<div class="grid" id="grid-vid"></div>
+<div class="grid" id="grid-vid">
+
+  <div class="card" data-type="vid" data-search="animação pov v1 — aproximação + detalhe a modelo se aproxima da câmera, toca suavemente um detalhe da roupa (laço/renda) e recua. expressão facial alterna naturalmente entre neutro e sorriso breve. #003 vid">
+    <div class="card-header">
+      <div class="card-meta">
+        <span class="tag tag-family">#003</span>
+        <span class="tag tag-vid">Vídeo</span>
+      </div>
+      <div class="card-title">Animação POV v1 — Aproximação + Detalhe</div>
+      <div class="card-desc">A modelo se aproxima da câmera, toca suavemente um detalhe da roupa (laço/renda) e recua. Expressão facial alterna naturalmente entre neutro e sorriso breve.</div>
+      <div class="inputs">
+        <span class="input-badge">Img 1 — Avatar com roupa</span>
+      </div>
+    </div>
+    <div class="code-wrap">
+      <div class="code-scroll"><pre id="p5">Animate the subject as a REAL person presenting clothing in a POV-style video.
+
+---
+
+## START OF ANIMATION
+
+- The subject starts at a natural distance from the camera
+- She calmly takes two small, natural steps forward toward the camera
+- While approaching, she gently touches and lightly holds the bow/lace detail on the chest area
+- The gesture is delicate, subtle and realistic, like naturally showing a clothing detail
+- No emphasis, no posing, no exaggeration
+- The movement feels spontaneous and casual
+- After briefly touching the bow, she naturally releases it
+- She takes a small step back to her original position
+- Smooth transition into the rest of the animation
+
+---
+
+## GENERAL MOTION STYLE
+
+- Natural, confident, fluid movements
+- Not static
+- Not exaggerated
+- Not robotic
+- Real human timing
+
+---
+
+## BODY MOVEMENTS
+
+- One hand naturally rests on the waist
+- Gentle hip movement (side-to-side, very subtle)
+- One foot forward, the other relaxed behind
+- Natural posture, relaxed shoulders
+
+---
+
+## CLOTHING PRESENTATION
+
+- Small, natural movements to highlight the outfit
+- Slight torso rotation to show fit and fabric
+- No aggressive posing
+- No fashion runway exaggeration
+- Movements feel spontaneous and casual
+
+---
+
+## FACIAL EXPRESSION (VERY IMPORTANT – REAL HUMAN TIMING)
+
+- The subject does NOT smile continuously
+- Facial expression alternates naturally throughout the video
+
+**While approaching the camera:**
+- Neutral, relaxed expression
+- Lips softly closed
+- Calm, confident look
+
+**During the bow/lace touch:**
+- A brief, subtle smile appears
+- Smile is soft and natural, not exaggerated
+- Slight cheek movement only
+
+**After releasing the bow:**
+- Expression returns to neutral
+- Relaxed face, natural breathing
+
+**Later in the animation:**
+- She gently turns her head slightly to one side
+- A short, warm smile appears again
+- Smile lasts briefly, then fades naturally
+
+**Smile behavior:**
+- Appears and disappears naturally
+- No frozen smile
+- No constant grin
+- No exaggerated facial tension
+
+---
+
+## PERSONALITY
+
+- Sympathetic
+- Approachable
+- Comfortable
+- Feels like a real person casually recording a video
+
+---
+
+## CAMERA &amp; POV
+
+- POV perspective, as if the phone is held by a person
+- Camera is completely fixed — no movement, no shake, no micro-movements
+- No zoom
+- Camera remains at chest/face height
+
+---
+
+## TIMING
+
+- Movements are continuous
+- No freezing
+- No looping poses
+- Smooth transitions between gestures
+
+---
+
+## REALISM RULES
+
+- Preserve original facial identity
+- Preserve skin texture
+- No tattoos, piercings, or ink anywhere on the skin — especially the arms, shoulders, and shoulder blades, the most common area where AI mistakenly adds a mark
+- Any part of the skin NOT clearly visible in Image 1 (e.g. back of the upper arm, shoulder blade) must be rendered as plain, unmarked skin matching the visible skin tone and texture — do not invent, generate, or guess any tattoo, pattern, or mark in areas not shown in Image 1
+- Preserve hair movement (slight natural motion)
+- Natural fabric physics
+- No beauty filters
+- No smoothing
+- No stylization
+
+---
+
+## RESTRICTIONS
+
+- No audio — completely silent, no music, no sound effects, no ambient sound
+- No talking
+- No text
+- No UI
+- No effects
+- No exaggerated dance
+- No influencer posing clichés
+- No tattoos of any kind, anywhere on the body
+
+---
+
+## FINAL RESULT
+
+A hyper-realistic POV fashion video where the subject feels alive and human, with natural facial expression changes, occasional soft smiles, neutral moments in between, and subtle head turns — indistinguishable from a real casual phone recording.</pre></div>
+    </div>
+    <div class="card-footer">
+      <button class="copy-btn" onclick="copyText('p5', this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copiar
+      </button>
+    </div>
+  </div>
+
+  <div class="card" data-type="vid" data-search="animação pov v2 — apresentação detalhada versão expandida do v1 (aproxima + toca laço/renda + recua) com regras muito mais detalhadas de linguagem corporal, olhos, cabelo, física de tecido e biomecânica humana para máximo realismo. #003 vid beta">
+    <div class="card-header">
+      <div class="card-meta">
+        <span class="tag tag-family">#003</span>
+        <span class="tag tag-vid">Vídeo</span>
+        <span class="tag tag-beta">BETA</span>
+      </div>
+      <div class="card-title">Animação POV v2 — Apresentação Detalhada</div>
+      <div class="card-desc">Versão expandida do v1 (aproxima + toca laço/renda + recua) com regras muito mais detalhadas de linguagem corporal, olhos, cabelo, física de tecido e biomecânica humana para máximo realismo.</div>
+      <div class="inputs">
+        <span class="input-badge">Img 1 — Avatar com roupa</span>
+      </div>
+    </div>
+    <div class="code-wrap">
+      <div class="code-scroll"><pre id="p6"># REALISTIC FASHION PRESENTATION ANIMATION
+
+## OBJECTIVE
+
+Animate the subject from the input image as a real person naturally presenting her outfit in a realistic POV video.
+
+Preserve the subject's identity exactly.
+
+The animation should resemble an authentic smartphone recording rather than a staged fashion shoot.
+
+---
+
+# IDENTITY LOCK
+
+Preserve exactly:
+
+* Face
+* Facial identity
+* Expression structure
+* Hair
+* Skin tone
+* Skin texture
+* Makeup
+* Body proportions
+* Pose proportions
+* Clothing
+* Accessories
+
+Do not beautify, redesign, stylize, or reinterpret any aspect of the subject.
+
+Identity preservation has absolute priority.
+
+---
+
+# CAMERA
+
+POV perspective.
+
+The camera remains completely stationary throughout the video.
+
+Maintain:
+
+* Eye-to-chest height
+* Fixed framing
+* Fixed focal length
+* No zoom
+* No pan
+* No tilt
+* No shake
+* No handheld jitter
+* No focus breathing
+
+The subject moves naturally within the frame while the camera never moves.
+
+---
+
+# ANIMATION SEQUENCE
+
+The subject begins standing naturally at a comfortable distance from the camera.
+
+She calmly walks forward with two small, relaxed steps.
+
+While approaching, she gently raises one hand and lightly touches the bow or lace detail located on the chest area.
+
+The gesture is subtle and effortless, as if casually showing a clothing detail.
+
+She briefly holds the fabric before naturally releasing it.
+
+She then takes one small step back, returning to approximately her original position.
+
+The movement flows continuously without pauses or abrupt transitions.
+
+---
+
+# BODY LANGUAGE
+
+Natural, relaxed posture.
+
+Shoulders remain loose.
+
+One hand naturally rests near the waist whenever appropriate.
+
+Weight shifts subtly between both legs.
+
+Small natural hip movement.
+
+Gentle torso rotation to reveal the clothing.
+
+Relaxed breathing throughout the animation.
+
+Natural balance adjustments.
+
+No rigid posture.
+
+---
+
+# CLOTHING PRESENTATION
+
+The clothing remains the focus.
+
+Movements should naturally reveal:
+
+* Fit
+* Fabric
+* Shape
+* Texture
+* Movement
+
+Avoid exaggerated modeling behavior.
+
+No runway walking.
+
+No influencer poses.
+
+No dramatic gestures.
+
+The presentation should feel effortless and spontaneous.
+
+---
+
+# FACIAL PERFORMANCE
+
+Expressions change naturally throughout the animation.
+
+The subject never maintains the same expression continuously.
+
+Sequence:
+
+Approaching:
+
+* Neutral expression
+* Relaxed lips
+* Calm eyes
+* Comfortable confidence
+
+Touching the bow:
+
+* A brief, genuine smile
+* Slight cheek movement
+* Soft eye expression
+
+After releasing the fabric:
+
+* Expression naturally returns to neutral
+
+Later:
+
+* Small head turn
+* Brief warm smile
+* Smile fades naturally
+
+Expressions should appear organically rather than being deliberately posed.
+
+Avoid:
+
+* Frozen smile
+* Constant grin
+* Exaggerated expressions
+* Overacting
+
+---
+
+# HEAD AND EYES
+
+Natural eye movement.
+
+Occasional blinking.
+
+Small eye refocusing.
+
+Subtle head turns.
+
+Micro-adjustments typical of real people.
+
+Never stare continuously into the camera.
+
+---
+
+# HAIR
+
+Natural secondary motion.
+
+Hair reacts gently to body movement.
+
+No excessive movement.
+
+No floating strands.
+
+No unrealistic simulation.
+
+---
+
+# FABRIC PHYSICS
+
+Generate realistic clothing behavior.
+
+Include:
+
+* Natural folds
+* Gravity
+* Compression
+* Fabric tension
+* Slight stretching where appropriate
+* Realistic draping
+
+Avoid:
+
+* Clipping
+* Floating fabric
+* Stiff cloth
+* Unrealistic deformation
+
+---
+
+# HUMAN MOTION
+
+Movement should exhibit authentic human biomechanics.
+
+Include:
+
+* Natural weight transfer
+* Slight body sway
+* Breathing motion
+* Small balance corrections
+* Organic timing
+* Continuous motion
+
+Avoid:
+
+* Robotic timing
+* Mechanical movement
+* Looping animations
+* Frozen poses
+* Sudden acceleration
+* Sudden stops
+
+---
+
+# SKIN PRESERVATION
+
+Preserve visible skin exactly.
+
+If previously hidden skin becomes visible during motion:
+
+* Match the existing skin tone.
+* Match the existing skin texture.
+
+Do not generate:
+
+* Tattoos
+* Piercings
+* Body paint
+* Scars
+* Moles
+* Freckles
+* Skin markings
+* Decorative elements
+
+Previously unseen skin must remain clean and consistent with the visible skin.
+
+---
+
+# VISUAL QUALITY
+
+Hyper-realistic.
+
+Real smartphone video appearance.
+
+Natural motion blur.
+
+Accurate lighting.
+
+Realistic shadows.
+
+Professional image quality.
+
+No CGI appearance.
+
+No AI artifacts.
+
+---
+
+# RESTRICTIONS
+
+No audio.
+
+No speech.
+
+No music.
+
+No ambient sound.
+
+No subtitles.
+
+No captions.
+
+No text.
+
+No logos.
+
+No UI.
+
+No filters.
+
+No cinematic effects.
+
+No stylization.
+
+No dance choreography.
+
+No exaggerated posing.
+
+---
+
+# FINAL RESULT
+
+Produce a hyper-realistic silent POV fashion presentation in which the subject appears completely alive and natural.
+
+The movements, facial expressions, breathing, posture, clothing behavior, and eye movements should be indistinguishable from those of a real person casually recording a short smartphone video while naturally presenting her outfit.</pre></div>
+    </div>
+    <div class="card-footer">
+      <button class="copy-btn" onclick="copyText('p6', this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copiar
+      </button>
+    </div>
+  </div>
+
+  <div class="card" data-type="vid" data-search="animação pov v1 — gesto de cabelo igual ao v1, com adição de um gesto casual de passar a mão no cabelo (~1 segundo) após a sequência principal de movimentos. #004 vid">
+    <div class="card-header">
+      <div class="card-meta">
+        <span class="tag tag-family">#004</span>
+        <span class="tag tag-vid">Vídeo</span>
+      </div>
+      <div class="card-title">Animação POV v1 — Gesto de Cabelo</div>
+      <div class="card-desc">Igual ao v1, com adição de um gesto casual de passar a mão no cabelo (~1 segundo) após a sequência principal de movimentos.</div>
+      <div class="inputs">
+        <span class="input-badge">Img 1 — Avatar com roupa</span>
+      </div>
+    </div>
+    <div class="code-wrap">
+      <div class="code-scroll"><pre id="p7">Animate the subject as a REAL person presenting clothing in a POV-style video.
+
+---
+
+## START OF ANIMATION
+
+- The subject starts at a natural distance from the camera
+- She calmly takes two small, natural steps forward toward the camera
+- While approaching, she gently touches and lightly holds the bow/lace detail on the chest area
+- The gesture is delicate, subtle and realistic, like naturally showing a clothing detail
+- No emphasis, no posing, no exaggeration
+- The movement feels spontaneous and casual
+- After briefly touching the bow, she naturally releases it
+- She takes a small step back to her original position
+- Smooth transition into the rest of the animation
+
+---
+
+## GENERAL MOTION STYLE
+
+- Natural, confident, fluid movements
+- Not static
+- Not exaggerated
+- Not robotic
+- Real human timing
+
+---
+
+## BODY MOVEMENTS
+
+- One hand naturally rests on the waist
+- Gentle hip movement (side-to-side, very subtle)
+- One foot forward, the other relaxed behind
+- Natural posture, relaxed shoulders
+
+---
+
+## CLOTHING PRESENTATION
+
+- Small, natural movements to highlight the outfit
+- Slight torso rotation to show fit and fabric
+- No aggressive posing
+- No fashion runway exaggeration
+- Movements feel spontaneous and casual
+
+---
+
+## ADDITIONAL NATURAL GESTURE (VERY SUBTLE)
+
+After the main body movement sequence:
+- The subject briefly raises one hand
+- Lightly brushes her hair backward near the side of the head
+- The gesture lasts approximately one second
+- The motion is casual and unintentional, like a natural self-adjustment
+- No emphasis, no posing
+- The hand immediately returns to a relaxed neutral position
+
+---
+
+## FACIAL EXPRESSION (VERY IMPORTANT – REAL HUMAN TIMING)
+
+- The subject does NOT smile continuously
+- Facial expression alternates naturally throughout the video
+
+**While approaching the camera:**
+- Neutral, relaxed expression
+- Lips softly closed
+- Calm, confident look
+
+**During the bow/lace touch:**
+- A brief, subtle smile appears
+- Smile is soft and natural, not exaggerated
+- Slight cheek movement only
+
+**After releasing the bow:**
+- Expression returns to neutral
+- Relaxed face, natural breathing
+
+**Later in the animation:**
+- She gently turns her head slightly to one side
+- A short, warm smile appears again
+- Smile lasts briefly, then fades naturally
+
+**Smile behavior:**
+- Appears and disappears naturally
+- No frozen smile
+- No constant grin
+- No exaggerated facial tension
+
+---
+
+## PERSONALITY
+
+- Sympathetic
+- Approachable
+- Comfortable
+- Feels like a real person casually recording a video
+
+---
+
+## CAMERA &amp; POV
+
+- POV perspective, as if the phone is held by a person
+- Camera is completely fixed — no movement, no shake, no micro-movements
+- No zoom
+- Camera remains at chest/face height
+
+---
+
+## TIMING
+
+- Movements are continuous
+- No freezing
+- No looping poses
+- Smooth transitions between gestures
+
+---
+
+## REALISM RULES
+
+- Preserve original facial identity
+- Preserve skin texture
+- No tattoos, piercings, or ink anywhere on the skin — especially the arms, shoulders, and shoulder blades, the most common area where AI mistakenly adds a mark
+- Any part of the skin NOT clearly visible in Image 1 (e.g. back of the upper arm, shoulder blade) must be rendered as plain, unmarked skin matching the visible skin tone and texture — do not invent, generate, or guess any tattoo, pattern, or mark in areas not shown in Image 1
+- Preserve hair movement (slight natural motion)
+- Natural fabric physics
+- No beauty filters
+- No smoothing
+- No stylization
+
+---
+
+## RESTRICTIONS
+
+- No audio — completely silent, no music, no sound effects, no ambient sound
+- No talking
+- No text
+- No UI
+- No effects
+- No exaggerated dance
+- No influencer posing clichés
+- No tattoos of any kind, anywhere on the body
+
+---
+
+## FINAL RESULT
+
+A hyper-realistic POV fashion video where the subject feels alive and human, with natural facial expression changes, occasional soft smiles, neutral moments in between, and subtle head turns — indistinguishable from a real casual phone recording.</pre></div>
+    </div>
+    <div class="card-footer">
+      <button class="copy-btn" onclick="copyText('p7', this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copiar
+      </button>
+    </div>
+  </div>
+
+  <div class="card" data-type="vid" data-search="animação pov v2 — gesto de cabelo detalhado versão expandida do v1-gesto-cabelo (aproxima + toca laço/renda + recua + ajeita o cabelo) com regras muito mais detalhadas de linguagem corporal, olhos, micro-movimentos humanos, física de tecido e iluminação. #004 vid beta">
+    <div class="card-header">
+      <div class="card-meta">
+        <span class="tag tag-family">#004</span>
+        <span class="tag tag-vid">Vídeo</span>
+        <span class="tag tag-beta">BETA</span>
+      </div>
+      <div class="card-title">Animação POV v2 — Gesto de Cabelo Detalhado</div>
+      <div class="card-desc">Versão expandida do v1-gesto-cabelo (aproxima + toca laço/renda + recua + ajeita o cabelo) com regras muito mais detalhadas de linguagem corporal, olhos, micro-movimentos humanos, física de tecido e iluminação.</div>
+      <div class="inputs">
+        <span class="input-badge">Img 1 — Avatar com roupa</span>
+      </div>
+    </div>
+    <div class="code-wrap">
+      <div class="code-scroll"><pre id="p8"># REALISTIC POV FASHION PRESENTATION
+
+## OBJECTIVE
+
+Animate the subject from the input image as a real person naturally presenting her outfit in a realistic POV-style video.
+
+Preserve the subject's identity exactly.
+
+The result should look like an authentic smartphone recording rather than a staged fashion shoot.
+
+---
+
+# IDENTITY LOCK
+
+Preserve exactly:
+
+* Face
+* Facial identity
+* Hair
+* Skin tone
+* Skin texture
+* Makeup
+* Body shape
+* Body proportions
+* Clothing
+* Accessories
+* Pose
+* Expression
+
+Identity preservation has absolute priority.
+
+Do NOT beautify, redesign, stylize, retouch, or reinterpret any part of the subject.
+
+---
+
+# CAMERA
+
+POV perspective from a person standing still while holding a smartphone.
+
+The camera remains intentionally steady throughout the video.
+
+Maintain:
+
+* Chest-to-face height
+* Fixed framing
+* Fixed focal length
+* No zoom
+* No pan
+* No tilt
+* No handheld shake
+* No micro-jitter
+* No focus breathing
+
+The subject moves naturally while the camera never moves.
+
+---
+
+# ANIMATION SEQUENCE
+
+The animation flows continuously without pauses or abrupt transitions.
+
+### 1. Initial Position
+
+The subject begins standing comfortably at a natural distance from the camera.
+
+She appears relaxed and comfortable.
+
+---
+
+### 2. Approach
+
+She calmly walks toward the camera with two small, natural steps.
+
+Her movement is relaxed and confident.
+
+No exaggerated modeling or posing.
+
+---
+
+### 3. Clothing Detail
+
+While approaching, she gently raises one hand and lightly touches the bow or lace detail on the chest.
+
+She briefly holds the fabric.
+
+The gesture feels spontaneous, delicate and natural, as if casually showing a clothing detail.
+
+No emphasis.
+
+No dramatic presentation.
+
+After approximately one second, she naturally releases the fabric.
+
+---
+
+### 4. Return
+
+She calmly takes one small step backward, returning close to her original position.
+
+Movement remains fluid and continuous.
+
+---
+
+### 5. Natural Hair Adjustment
+
+After returning to a relaxed stance:
+
+She casually lifts one hand.
+
+She gently brushes a few strands of hair behind the side of her head.
+
+The gesture lasts approximately one second.
+
+It feels completely unconscious and natural, like a brief self-adjustment.
+
+The hand immediately returns to a relaxed resting position.
+
+The gesture happens only once.
+
+No posing.
+
+No emphasis.
+
+---
+
+### 6. Clothing Presentation
+
+She makes small, natural movements that subtly reveal the outfit.
+
+Examples include:
+
+* Slight torso rotation
+* Gentle weight shifts
+* Relaxed posture adjustments
+
+The clothing remains the visual focus.
+
+---
+
+# BODY LANGUAGE
+
+Natural posture.
+
+Relaxed shoulders.
+
+One hand may naturally rest near the waist whenever appropriate.
+
+Subtle hip movement.
+
+One foot comfortably supporting more weight while the other remains relaxed.
+
+Natural balance.
+
+Comfortable stance.
+
+No rigid posture.
+
+No exaggerated posing.
+
+---
+
+# FACIAL PERFORMANCE
+
+Expressions change naturally throughout the animation.
+
+The subject never maintains a constant smile.
+
+### During the approach
+
+* Neutral expression
+* Relaxed lips
+* Calm eyes
+* Comfortable confidence
+
+### While touching the bow
+
+A brief, genuine smile appears.
+
+The smile is soft.
+
+Only slight cheek movement.
+
+Natural eye warmth.
+
+---
+
+### After releasing the bow
+
+The smile fades naturally.
+
+Expression returns to neutral.
+
+Relaxed face.
+
+Natural breathing.
+
+---
+
+### Later
+
+She gently turns her head slightly to one side.
+
+Another brief warm smile appears.
+
+The smile naturally fades after a moment.
+
+Expressions should emerge naturally rather than feeling intentionally posed.
+
+Avoid:
+
+* Frozen smile
+* Constant grin
+* Overacting
+* Exaggerated facial tension
+
+---
+
+# HEAD &amp; EYES
+
+Natural eye movement.
+
+Occasional blinking.
+
+Small eye refocusing.
+
+Subtle head turns.
+
+Tiny facial micro-adjustments.
+
+Never stare continuously into the camera.
+
+---
+
+# MICRO HUMAN MOVEMENTS
+
+Throughout the animation:
+
+* Visible natural breathing
+* Occasional blinking
+* Tiny eye refocusing
+* Small weight transfers between both feet
+* Gentle balance corrections
+* Slight finger relaxation
+* Natural shoulder relaxation
+* Continuous organic motion
+
+Never appear frozen.
+
+Never appear robotic.
+
+---
+
+# HAIR
+
+Hair moves naturally with body motion.
+
+Only subtle secondary motion.
+
+No floating strands.
+
+No exaggerated physics.
+
+No unrealistic movement.
+
+---
+
+# FABRIC PHYSICS
+
+Generate realistic clothing behavior.
+
+Include:
+
+* Natural folds
+* Gravity
+* Compression
+* Fabric tension
+* Gentle stretching where physically appropriate
+* Realistic draping
+
+Avoid:
+
+* Clipping
+* Floating fabric
+* Rigid cloth
+* Unrealistic deformation
+
+---
+
+# LIGHTING
+
+Preserve the original lighting exactly.
+
+Maintain:
+
+* Light direction
+* Exposure
+* Shadow softness
+* White balance
+* Color temperature
+
+Generate only the shadows naturally produced by body movement and clothing.
+
+Do not relight the subject.
+
+---
+
+# SKIN PRESERVATION
+
+Preserve all visible skin exactly.
+
+If previously hidden skin becomes visible during motion:
+
+* Match the existing skin tone.
+* Match the existing skin texture.
+
+Do not generate:
+
+* Tattoos
+* Piercings
+* Body paint
+* Scars
+* Birthmarks
+* Moles
+* Freckles
+* Decorative markings
+* Ink of any kind
+
+Previously unseen skin must appear clean, natural, and fully consistent with the visible skin.
+
+---
+
+# VISUAL QUALITY
+
+Hyper-realistic.
+
+Real smartphone video appearance.
+
+Natural motion blur.
+
+Professional photographic lighting.
+
+Accurate shadows.
+
+Realistic skin detail.
+
+Natural fabric detail.
+
+No CGI appearance.
+
+No AI artifacts.
+
+No beauty filters.
+
+No skin smoothing.
+
+No stylization.
+
+---
+
+# RESTRICTIONS
+
+No audio.
+
+No speech.
+
+No music.
+
+No ambient sound.
+
+No subtitles.
+
+No captions.
+
+No text.
+
+No logos.
+
+No UI.
+
+No filters.
+
+No visual effects.
+
+No dance choreography.
+
+No influencer posing clichés.
+
+No exaggerated runway behavior.
+
+---
+
+# FINAL RESULT
+
+Produce a hyper-realistic silent POV fashion presentation in which the subject appears completely alive and authentic.
+
+Every movement—including walking, breathing, blinking, smiling, weight shifts, fabric behavior, and the brief hair-adjustment gesture—should feel effortless and naturally timed, making the video indistinguishable from a real casual smartphone recording of someone confidently presenting their outfit.</pre></div>
+    </div>
+    <div class="card-footer">
+      <button class="copy-btn" onclick="copyText('p8', this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copiar
+      </button>
+    </div>
+  </div>
+
+  <div class="card" data-type="vid" data-search="animação pov v1 — aproximação + detalhe + giro lateral igual ao v1 com mais movimentos: aproxima, toca detalhe, recua e gira o tronco lateralmente (~60–90°) para mostrar a roupa de lado. sem 360°. #005 vid">
+    <div class="card-header">
+      <div class="card-meta">
+        <span class="tag tag-family">#005</span>
+        <span class="tag tag-vid">Vídeo</span>
+      </div>
+      <div class="card-title">Animação POV v1 — Aproximação + Detalhe + Giro Lateral</div>
+      <div class="card-desc">Igual ao v1 com mais movimentos: aproxima, toca detalhe, recua e gira o tronco lateralmente (~60–90°) para mostrar a roupa de lado. Sem 360°.</div>
+      <div class="inputs">
+        <span class="input-badge">Img 1 — Avatar com roupa</span>
+      </div>
+    </div>
+    <div class="code-wrap">
+      <div class="code-scroll"><pre id="p9">Animate the subject as a REAL person presenting clothing in a POV-style video with extended movement to show the outfit from the side.
+
+---
+
+## MOVEMENT SEQUENCE (FULL)
+
+### Step 1 — Approach + clothing detail touch
+
+- The subject starts at a natural distance from the camera
+- She calmly takes two small, natural steps forward toward the camera
+- While approaching, she gently touches and lightly holds a detail on the clothing (bow, lace, fabric texture, or waistline — whichever is most prominent in Image 1)
+- The gesture is delicate, subtle, and realistic — like naturally showing a detail to someone
+- No emphasis, no posing, no exaggeration
+- After briefly touching the detail, she naturally releases it
+
+### Step 2 — Step back to original position
+
+- She takes one small step back to approximately her original position
+- The movement is smooth and natural — not a rush
+- She settles into a relaxed stance, weight slightly to one side
+
+### Step 3 — Torso rotation to the side (MAIN ADDITION)
+
+- From her standing position, she slowly and naturally rotates her torso to one side
+- The rotation is approximately 60–90 degrees — clear side profile, NOT a full 180° or 360°
+- TORSO ROTATION ONLY — feet stay in place, no walking or spinning
+- The rotation is slow and deliberate — casual, not runway
+- Arms remain in a relaxed natural position during the turn — one hand may rest lightly on the hip
+- As she turns, the side profile of the clothing becomes fully visible:
+  - Waistline fit from the side
+  - Hip and torso silhouette
+  - Fabric drape and length from a side angle
+  - Any back or side details of the outfit
+
+### Step 4 — Hold the side + glance back
+
+- She holds the side position naturally for approximately 1–1.5 seconds
+- Slight natural weight shift or sway — she does not freeze completely
+- She turns her head naturally back toward the camera — a casual sideways glance
+- Expression during this glance: soft, natural, relaxed
+
+### Step 5 — Return to front
+
+- She slowly and naturally rotates her torso back to face the camera
+- The movement is as smooth and relaxed as the turn out
+- She settles back into a comfortable forward-facing stance
+- Brief natural pause at the end — she holds position for the camera
+
+---
+
+## GENERAL MOTION STYLE
+
+- Natural, confident, fluid movements throughout
+- Not static at any point
+- Not exaggerated
+- Not robotic
+- Real human timing and weight
+- The entire sequence feels like a casual, spontaneous self-recording — not choreographed
+
+---
+
+## BODY MOVEMENTS (THROUGHOUT)
+
+- One hand naturally rests on the waist or hip between gestures
+- Gentle hip movement (side-to-side, very subtle) during standing moments
+- Natural posture, relaxed shoulders
+- Weight shifts naturally between feet during transitions
+
+---
+
+## CLOTHING PRESENTATION
+
+- The torso rotation is the primary way to show the outfit from the side
+- Natural fabric physics during the rotation — drape, weight, and flutter match the material in Image 1
+- Fabric responds realistically to the body turning
+- No aggressive posing, no runway walk, no fashion show movement
+- Movements feel spontaneous and casual
+
+---
+
+## FACIAL EXPRESSION (VERY IMPORTANT – REAL HUMAN TIMING)
+
+- The subject does NOT smile continuously
+- Facial expression alternates naturally throughout the video
+
+**While approaching the camera:**
+- Neutral, relaxed expression
+- Lips softly closed
+- Calm, confident look
+
+**During the clothing detail touch:**
+- A brief, subtle smile appears
+- Smile is soft and natural, not exaggerated
+- Slight cheek movement only
+
+**After releasing the detail:**
+- Expression returns to neutral
+- Relaxed face, natural breathing
+
+**During the torso rotation:**
+- Neutral, relaxed expression while turning
+- She naturally glances back at the camera during the side hold — a short, warm look
+
+**At the side hold glance back:**
+- A soft, brief smile appears
+- Lasts only a moment, then fades naturally
+
+**On return to front:**
+- Expression is calm and natural
+- One final soft smile or neutral close
+
+**Smile behavior:**
+- Appears and disappears naturally
+- No frozen smile
+- No constant grin
+- No exaggerated facial tension
+
+---
+
+## PERSONALITY
+
+- Sympathetic
+- Approachable
+- Comfortable
+- Feels like a real person casually recording a video to show off their outfit
+
+---
+
+## CAMERA &amp; POV
+
+- POV perspective, as if the phone is held by a person
+- Camera is completely fixed — no movement, no shake, no micro-movements
+- No zoom
+- Camera remains at chest/face height throughout
+
+---
+
+## TIMING
+
+- Step 1 — Approach + detail touch: ~2s
+- Step 2 — Step back: ~1s
+- Step 3 — Torso rotation to side: ~1.5s
+- Step 4 — Side hold + glance back: ~1.5s
+- Step 5 — Return to front: ~1s
+- Total: approximately 7–8 seconds
+- Movements are continuous — no freezing between steps
+- Smooth transitions throughout
+
+---
+
+## REALISM RULES
+
+- Preserve original facial identity
+- Preserve skin texture
+- No tattoos, piercings, or ink anywhere on the skin — especially the arms, shoulders, and shoulder blades, the most common area where AI mistakenly adds a mark
+- Any part of the skin NOT clearly visible in Image 1 (e.g. back of the upper arm, shoulder blade) must be rendered as plain, unmarked skin matching the visible skin tone and texture — do not invent, generate, or guess any tattoo, pattern, or mark in areas not shown in Image 1, even as the torso rotation reveals new angles
+- Preserve hair movement (slight natural motion during rotation)
+- Natural fabric physics — especially during torso turn
+- No beauty filters
+- No smoothing
+- No stylization
+
+---
+
+## RESTRICTIONS
+
+- No audio — completely silent, no music, no sound effects, no ambient sound
+- No talking
+- No text
+- No UI
+- No effects
+- No full 360° rotation
+- No runway walk or fashion show movement
+- No exaggerated dance
+- No influencer posing clichés
+- No tattoos of any kind, anywhere on the body
+
+---
+
+## FINAL RESULT
+
+A hyper-realistic POV fashion video that expands on v1: the subject approaches, touches a clothing detail, steps back, then naturally rotates her torso to show the outfit's side profile — with a casual glance back at the camera — before returning to face forward. More movement, more clothing visibility, same human and casual feel as v1.</pre></div>
+    </div>
+    <div class="card-footer">
+      <button class="copy-btn" onclick="copyText('p9', this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copiar
+      </button>
+    </div>
+  </div>
+
+  <div class="card" data-type="vid" data-search="animação pov v2 — aproximação + detalhe + giro lateral (detalhado) versão muito mais detalhada do pov-v1-giro-lateral — mesma sequência (aproxima + toca detalhe + recua + gira 60–90° + segura + retorna), com micro-movimentos humanos, física de tecido/cabelo e iluminação detalhados por seção. #005 vid beta">
+    <div class="card-header">
+      <div class="card-meta">
+        <span class="tag tag-family">#005</span>
+        <span class="tag tag-vid">Vídeo</span>
+        <span class="tag tag-beta">BETA</span>
+      </div>
+      <div class="card-title">Animação POV v2 — Aproximação + Detalhe + Giro Lateral (Detalhado)</div>
+      <div class="card-desc">Versão muito mais detalhada do pov-v1-giro-lateral — mesma sequência (aproxima + toca detalhe + recua + gira 60–90° + segura + retorna), com micro-movimentos humanos, física de tecido/cabelo e iluminação detalhados por seção.</div>
+      <div class="inputs">
+        <span class="input-badge">Img 1 — Avatar com roupa</span>
+      </div>
+    </div>
+    <div class="code-wrap">
+      <div class="code-scroll"><pre id="p10"># REALISTIC POV FASHION PRESENTATION — EXTENDED SIDE PROFILE
+
+## OBJECTIVE
+
+Animate the subject from Image 1 as a real person naturally presenting the outfit in a realistic POV smartphone video.
+
+The animation should feel spontaneous and authentic, as though she is casually showing the outfit to someone recording with a phone.
+
+Preserve the subject's identity, clothing, environment, lighting and framing exactly as shown in Image 1.
+
+---
+
+# IDENTITY LOCK
+
+Preserve exactly:
+
+- Face
+- Facial identity
+- Facial proportions
+- Skin tone
+- Skin texture
+- Hair
+- Hair color
+- Hair texture
+- Hair volume
+- Hair length
+- Body proportions
+- Clothing
+- Accessories
+- Pose proportions
+- Background
+- Lighting
+- Camera framing
+
+Identity preservation has absolute priority.
+
+Never beautify, redesign, reinterpret or stylize any aspect of the subject.
+
+---
+
+# CAMERA
+
+POV perspective from a person standing still while holding a smartphone.
+
+The camera remains intentionally fixed throughout the entire video.
+
+Maintain:
+
+- Chest-to-face height
+- Fixed framing
+- Fixed focal length
+- 50mm equivalent perspective
+- No zoom
+- No pan
+- No tilt
+- No rotation
+- No handheld shake
+- No micro-jitter
+- No focus breathing
+
+Only the subject moves.
+
+---
+
+# ANIMATION SEQUENCE
+
+The animation is continuous and naturally connected from beginning to end.
+
+No pauses feel artificial.
+
+No movement appears choreographed.
+
+---
+
+## PHASE 1 — APPROACH
+
+The subject begins exactly as shown in Image 1.
+
+She stands comfortably at a natural distance.
+
+Visible natural breathing.
+
+Occasional blinking.
+
+Small balance adjustments.
+
+She calmly walks toward the camera with two small, relaxed steps.
+
+Movement feels effortless.
+
+No runway behavior.
+
+No exaggerated posing.
+
+---
+
+## PHASE 2 — CLOTHING DETAIL
+
+While approaching, she naturally raises one hand and gently touches the most visually prominent clothing detail visible in Image 1.
+
+This may be:
+
+- Bow
+- Lace
+- Fabric texture
+- Waist detail
+- Decorative trim
+
+She lightly holds the fabric for approximately one second.
+
+The gesture feels spontaneous and natural.
+
+No emphasis.
+
+No deliberate presentation.
+
+She naturally releases the fabric.
+
+---
+
+## PHASE 3 — RETURN
+
+She calmly takes one small step backward.
+
+She returns close to her original position.
+
+Her posture remains relaxed.
+
+Weight naturally settles onto one leg.
+
+Breathing remains visible.
+
+---
+
+## PHASE 4 — SIDE ROTATION
+
+Remaining in place, she slowly rotates her upper body approximately 60–90 degrees toward whichever side appears most natural.
+
+This is a relaxed torso rotation.
+
+Not a spin.
+
+Not a runway turn.
+
+Not a full-body pivot.
+
+Her feet remain planted naturally.
+
+Her shoulders, hips and torso rotate together with realistic biomechanics.
+
+One hand may naturally rest near the waist or hip.
+
+The other arm hangs comfortably.
+
+As she turns, the clothing naturally reveals:
+
+- Side silhouette
+- Waist fit
+- Hip contour
+- Fabric drape
+- Garment length
+- Side construction
+- Partial rear garment details
+
+Movement remains slow and fluid.
+
+---
+
+## PHASE 5 — SIDE HOLD
+
+She comfortably holds the side profile for approximately one second.
+
+She never freezes.
+
+Visible breathing.
+
+Tiny balance corrections.
+
+Gentle body sway.
+
+Natural shoulder relaxation.
+
+She briefly turns her head toward the camera.
+
+The glance feels effortless and friendly.
+
+A soft smile naturally appears.
+
+The smile lasts briefly before fading.
+
+---
+
+## PHASE 6 — RETURN TO FRONT
+
+She slowly rotates back toward the camera.
+
+Movement remains continuous.
+
+Weight transfers naturally back to the original stance.
+
+Her shoulders relax.
+
+She settles into the original forward-facing position.
+
+The final framing closely matches Image 1.
+
+She naturally pauses for a brief moment.
+
+---
+
+# BODY LANGUAGE
+
+Natural posture.
+
+Relaxed shoulders.
+
+Visible breathing.
+
+Subtle hip movement.
+
+Natural weight transfer.
+
+Small balance corrections.
+
+Relaxed fingers.
+
+Comfortable stance.
+
+No rigid posing.
+
+No fashion-model behavior.
+
+---
+
+# FACIAL PERFORMANCE
+
+Expressions evolve naturally.
+
+The subject never maintains a constant smile.
+
+Opening:
+
+- Neutral expression
+- Relaxed lips
+- Calm eyes
+- Comfortable confidence
+
+During clothing touch:
+
+- Brief genuine smile
+- Slight cheek movement
+- Soft eye warmth
+
+After releasing the clothing:
+
+- Smile naturally fades
+- Neutral relaxed expression
+
+During torso rotation:
+
+- Calm expression
+- Comfortable confidence
+
+During side glance:
+
+- Brief warm smile
+- Friendly eye contact
+- Natural expression
+
+Return:
+
+- Neutral or soft smile
+- Relaxed face
+
+Avoid:
+
+- Frozen smile
+- Constant grin
+- Overacting
+- Exaggerated expressions
+
+---
+
+# MICRO HUMAN MOVEMENTS
+
+Throughout the animation:
+
+- Visible breathing
+- Occasional blinking
+- Tiny eye refocusing
+- Natural head stabilization
+- Gentle shoulder relaxation
+- Small balance corrections
+- Subtle finger movement
+- Continuous organic motion
+
+Never appear robotic.
+
+Never freeze.
+
+---
+
+# HAIR
+
+Hair reacts naturally to body movement.
+
+Maintain exactly:
+
+- Color
+- Texture
+- Volume
+- Length
+- Style
+
+Only subtle secondary movement.
+
+No floating strands.
+
+No unrealistic simulation.
+
+---
+
+# FABRIC PHYSICS
+
+The clothing behaves according to its actual material.
+
+Generate:
+
+- Natural folds
+- Gravity
+- Fabric tension
+- Compression
+- Slight inertia during turning
+- Realistic draping
+- Smooth settling after movement
+
+Heavy fabrics settle more slowly.
+
+Light fabrics move more freely.
+
+Never produce:
+
+- Clipping
+- Floating fabric
+- Rigid cloth
+- Unrealistic deformation
+
+---
+
+# LIGHTING
+
+Preserve Image 1 lighting exactly.
+
+Maintain:
+
+- Light direction
+- Exposure
+- White balance
+- Color temperature
+- Shadow softness
+
+Lighting responds naturally as the body rotates.
+
+Do not relight the subject.
+
+Do not introduce cinematic lighting.
+
+---
+
+# SKIN PRESERVATION
+
+Preserve all visible skin exactly.
+
+Previously hidden skin revealed during rotation must:
+
+- Match existing skin tone.
+- Match existing skin texture.
+
+Do not generate:
+
+- Tattoos
+- Piercings
+- Body paint
+- Scars
+- Birthmarks
+- Freckles
+- Decorative markings
+- Ink of any kind
+
+Previously unseen skin must remain clean and fully consistent with the visible skin.
+
+---
+
+# VISUAL QUALITY
+
+Ultra-photorealistic.
+
+Authentic smartphone video.
+
+Natural motion blur.
+
+Professional photographic rendering.
+
+True camera dynamic range.
+
+Visible skin microtexture.
+
+Natural fabric detail.
+
+Natural hair detail.
+
+No CGI appearance.
+
+No AI artifacts.
+
+No beauty filters.
+
+No skin smoothing.
+
+No plastic appearance.
+
+No stylization.
+
+---
+
+# TIMING
+
+Opening stance: approximately 0.5 seconds.
+
+Approach and clothing touch: approximately 2 seconds.
+
+Step back: approximately 1 second.
+
+Torso rotation: approximately 1.5 seconds.
+
+Side hold and glance: approximately 1.5 seconds.
+
+Return to front: approximately 1 second.
+
+Motion remains continuous throughout.
+
+No freezing.
+
+No looping.
+
+---
+
+# RESTRICTIONS
+
+No audio.
+
+No speech.
+
+No music.
+
+No ambient sound.
+
+No subtitles.
+
+No captions.
+
+No text.
+
+No logos.
+
+No watermarks.
+
+No UI.
+
+No visual effects.
+
+No 180° turn.
+
+No 360° rotation.
+
+No runway walk.
+
+No fashion show posing.
+
+No influencer posing clichés.
+
+No exaggerated dance.
+
+---
+
+# FINAL RESULT
+
+Produce a hyper-realistic silent POV smartphone video in which the subject naturally approaches the camera, briefly touches a clothing detail, steps back, slowly rotates approximately 60–90 degrees to present the outfit from the side, briefly glances back toward the camera with a warm natural smile, and smoothly returns to the original forward-facing position.
+
+Identity, clothing, lighting, environment, framing and overall appearance remain perfectly consistent with Image 1 throughout the entire animation, making the result indistinguishable from a real casual smartphone recording.</pre></div>
+    </div>
+    <div class="card-footer">
+      <button class="copy-btn" onclick="copyText('p10', this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copiar
+      </button>
+    </div>
+  </div>
+
+  <div class="card" data-type="vid" data-search="animação cta v1 — dedo apontando prompt estruturado em json. a modelo se inclina em direção à câmera com sorriso vendedor e aponta repetidamente o dedo indicador para baixo (cta / link). 8s · 9:16 · sem fala. #006 json vid">
+    <div class="card-header">
+      <div class="card-meta">
+        <span class="tag tag-family">#006</span>
+        <span class="tag tag-json">JSON</span>
+        <span class="tag tag-vid">Vídeo</span>
+      </div>
+      <div class="card-title">Animação CTA v1 — Dedo Apontando</div>
+      <div class="card-desc">Prompt estruturado em JSON. A modelo se inclina em direção à câmera com sorriso vendedor e aponta repetidamente o dedo indicador para baixo (CTA / link). 8s · 9:16 · sem fala.</div>
+      <div class="inputs">
+        <span class="input-badge">Img 1 — Avatar</span>
+      </div>
+    </div>
+    <div class="code-wrap">
+      <div class="code-scroll"><pre id="p11">{
+  "version": "3.1",
+  "aspectRatio": "9:16",
+  "durationSeconds": 8,
+  "seed": 12345,
+  "subjectRef": "usar a imagem enviada como âncora de identidade, mantendo exatamente as mesmas feições, tom de pele, cor de cabelo, mesma cor, mesma textura, mesmo volume e mesmo comprimento durante TODO o vídeo, sem qualquer alteração em nenhum momento, sem tatuagens, piercings ou tinta na pele",
+  "referenceStyle": "realismo cinematográfico natural, interação direta com a câmera estilo gravação em celular",
+  "negativePrompt": "sem áudio, sem música de fundo, sem efeitos sonoros, sem som ambiente, sem falas, sem áudio vocal, sem movimento labial articulando palavras, sem legendas, sem texto na tela, sem logos, sem marcas d'água, sem deformações corporais, sem dedos extras, sem distorção de mãos, sem artefatos de IA, sem mudança de cor do cabelo, sem mudança de textura do cabelo, sem mudança de estilo do cabelo, sem alteração de iluminação que modifique a cor do cabelo, sem tatuagens de qualquer tipo em qualquer parte do corpo, especialmente nos braços, ombros e omoplatas, área onde a IA mais costuma adicionar marcas por engano; qualquer parte da pele que não esteja claramente visível na imagem enviada deve ser renderizada como pele lisa e sem marcas, na mesma tonalidade da pele visível, sem inventar nenhum padrão ou tatuagem em áreas não mostradas na imagem original",
+  "safety": {
+    "allowMinorViolence": false,
+    "allowNudity": false
+  },
+  "shots": [
+    {
+      "scene": "ambiente interno residencial com moldura de madeira e iluminação quente natural",
+      "action": "ela dá um passo natural para frente, inclina o tronco entre 30 e 40 graus em direção à câmera, mantém contato visual constante com um sorriso cativante e vendedor durante toda a cena. Sem falar absolutamente nada e sem articular palavras com os lábios. Ela levanta a mão direita e posiciona o dedo indicador claramente apontado para baixo (direção inferior da tela, não para a lente). O gesto é intencional e expressivo, realizando um leve movimento repetido de cima para baixo com o dedo indicador, como uma chamada visual para ação. O sorriso permanece natural, envolvente e confiante do início ao fim. O cabelo permanece visualmente idêntico durante toda a ação, sem qualquer alteração de cor, brilho, forma ou volume.",
+      "camera": "câmera completamente fixa, sem nenhum movimento; 50mm; 24fps; 1/120; foco contínuo no rosto; profundidade de campo rasa mantendo o fundo levemente desfocado",
+      "lighting": "luz quente lateral suave com leve preenchimento frontal; iluminação estável e constante, sem variação de temperatura de cor ao longo do vídeo",
+      "environment": "fundo levemente desfocado; movimento natural dos cabelos ao inclinar; leve sensação de profundidade realista sem distorção de mãos; manter consistência total de aparência do cabelo do início ao fim"
+    }
+  ]
+}</pre></div>
+    </div>
+    <div class="card-footer">
+      <button class="copy-btn" onclick="copyText('p11', this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copiar
+      </button>
+    </div>
+  </div>
+
+  <div class="card" data-type="vid" data-search="animação cta v2 — dedo apontando (detalhado) versão expandida do cta em json — aproxima, sorri e aponta o dedo para baixo duas vezes, com micro-movimentos humanos (respiração, piscar, transferência de peso) e bloqueio explícito contra tatuagens/mudanças de cabelo. 8s · 9:16 · sem fala. #006 json vid beta">
+    <div class="card-header">
+      <div class="card-meta">
+        <span class="tag tag-family">#006</span>
+        <span class="tag tag-json">JSON</span>
+        <span class="tag tag-vid">Vídeo</span>
+        <span class="tag tag-beta">BETA</span>
+      </div>
+      <div class="card-title">Animação CTA v2 — Dedo Apontando (Detalhado)</div>
+      <div class="card-desc">Versão expandida do CTA em JSON — aproxima, sorri e aponta o dedo para baixo duas vezes, com micro-movimentos humanos (respiração, piscar, transferência de peso) e bloqueio explícito contra tatuagens/mudanças de cabelo. 8s · 9:16 · sem fala.</div>
+      <div class="inputs">
+        <span class="input-badge">Img 1 — Avatar</span>
+      </div>
+    </div>
+    <div class="code-wrap">
+      <div class="code-scroll"><pre id="p12">{
+  "version": "3.1",
+  "aspectRatio": "9:16",
+  "durationSeconds": 8,
+  "seed": 12345,
+
+  "subjectRef": "Use the uploaded image as the absolute identity anchor. Preserve exactly the same facial identity, facial structure, facial proportions, skin tone, skin texture, hairstyle, hair color, hair texture, hair volume, hair length, body proportions, clothing, pose proportions and overall appearance throughout the entire video. Identity preservation has absolute priority. Never redesign, beautify, reinterpret or modify any aspect of the subject.",
+
+  "referenceStyle": "natural cinematic realism, authentic smartphone recording, direct eye contact, realistic human behavior",
+
+  "negativePrompt": "no audio, no music, no ambient sound, no speech, no lip-sync, no mouth articulation, no subtitles, no captions, no text, no logos, no watermarks, no UI, no visual effects, no CGI appearance, no AI artifacts, no body deformation, no facial deformation, no extra fingers, no distorted hands, no distorted limbs, no beauty filters, no skin smoothing, no glamour retouching, no stylization, no tattoos, no piercings, no scars, no body paint, no skin markings, no hair color changes, no hairstyle changes, no hair length changes, no hair texture changes, no lighting changes that alter skin tone or hair color",
+
+  "safety": {
+    "allowMinorViolence": false,
+    "allowNudity": false
+  },
+
+  "shots": [
+    {
+      "scene": "Warm residential interior with wooden trim, softly blurred background and natural depth.",
+
+      "action": "The subject begins standing comfortably at a natural distance from the camera with a relaxed posture and a neutral facial expression. She calmly takes one natural step forward while maintaining direct eye contact with the camera. As she approaches, her expression gradually transitions into a warm, friendly and inviting smile. Without speaking or articulating any words, she slowly raises her right hand and clearly points her index finger toward the bottom edge of the frame, never toward the camera lens. She performs two small, smooth downward pointing gestures, resembling a subtle visual call-to-action. Her smile remains warm and natural during the gesture. Visible breathing, occasional blinking, tiny eye refocusing, subtle weight transfer between both feet, gentle shoulder relaxation and natural balance corrections occur continuously throughout the animation. Hair moves only slightly as a natural consequence of body movement while remaining visually identical in color, texture, volume and length. Clothing follows realistic fabric physics with natural folds and subtle movement. After completing the pointing gesture, she relaxes her arm naturally while maintaining eye contact and a pleasant smile until the end of the clip.",
+
+      "camera": "POV perspective from a person standing still while holding a smartphone. Camera remains intentionally locked-off and completely stable throughout the shot. Chest-to-face height, 50mm lens equivalent, 24fps, 1/120 shutter, continuous autofocus on the eyes, shallow depth of field, fixed framing, fixed focal length, no zoom, no pan, no tilt, no handheld shake, no micro-jitter and no focus breathing.",
+
+      "lighting": "Soft warm side lighting with gentle frontal fill. Stable exposure, constant white balance, consistent color temperature and realistic skin rendering throughout the entire video without any lighting variation.",
+
+      "environment": "Realistic residential interior with softly blurred background, natural depth separation, accurate perspective, subtle realistic motion blur, authentic photographic rendering, realistic clothing physics, gentle natural hair movement caused only by body motion, no environmental distractions and complete visual consistency from beginning to end."
+    }
+  ]
+}</pre></div>
+    </div>
+    <div class="card-footer">
+      <button class="copy-btn" onclick="copyText('p12', this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copiar
+      </button>
+    </div>
+  </div>
+
+  <div class="card" data-type="vid" data-search="animação cta v1 — beijo a modelo se aproxima da câmera, sopra um beijo natural e expressivo diretamente para a lente. gesto caloroso e genuíno com expressão facial progressiva. #007 vid">
+    <div class="card-header">
+      <div class="card-meta">
+        <span class="tag tag-family">#007</span>
+        <span class="tag tag-vid">Vídeo</span>
+      </div>
+      <div class="card-title">Animação CTA v1 — Beijo</div>
+      <div class="card-desc">A modelo se aproxima da câmera, sopra um beijo natural e expressivo diretamente para a lente. Gesto caloroso e genuíno com expressão facial progressiva.</div>
+      <div class="inputs">
+        <span class="input-badge">Img 1 — Avatar</span>
+      </div>
+    </div>
+    <div class="code-wrap">
+      <div class="code-scroll"><pre id="p13">Animate the subject as a REAL person delivering a natural, charming kiss-blow gesture directly to the camera.
+
+---
+
+## START OF ANIMATION
+
+- The subject starts at a comfortable mid-distance from the camera
+- She takes one small, relaxed step forward
+- Her posture is open, shoulders relaxed, body slightly angled toward the lens
+- The movement toward the camera is calm and unhurried
+
+---
+
+## GENERAL MOTION STYLE
+
+- Natural, warm, fluid movements
+- Not static
+- Not exaggerated
+- Not robotic
+- Real human timing
+
+---
+
+## BODY MOVEMENTS
+
+- One hand rests naturally at the side or waist at the start
+- Gentle weight shift from one foot to the other as she steps forward
+- Slight hip rotation — subtle, not performative
+- Natural posture throughout, no stiffness
+
+---
+
+## KISS-BLOW GESTURE (MAIN ACTION — VERY IMPORTANT)
+
+The kiss-blow must feel completely natural, like something a real person does casually:
+
+**Phase 1 — Hand rises to the mouth:**
+- After stepping forward, she raises her right hand slowly and naturally toward her face
+- The hand moves in a relaxed arc — not stiff, not mechanical
+- The fingers come together softly and touch her lips directly, as if she is about to give a real kiss
+- Her lips press lightly against her fingers for approximately one full second
+- This contact must look genuine — the hand actually reaches the mouth, not hovering near it
+
+**Phase 2 — Releasing the kiss:**
+- She then extends her arm forward and slightly upward toward the camera — smooth, unhurried
+- The fingers open softly as if releasing the kiss into the air
+- The motion flows directly from the lips outward — no pause or reset between phases
+
+**Phase 3 — Return:**
+- The arm returns naturally and loosely to her side
+- No freeze at the end — she stays in motion, subtly shifting her weight back
+- The gesture is warm, not theatrical
+
+---
+
+## FACIAL EXPRESSION (VERY IMPORTANT – REAL HUMAN TIMING)
+
+- The subject does NOT smile continuously
+- Facial expression transitions naturally with the gesture
+
+**While approaching the camera:**
+- Neutral, relaxed expression
+- Lips softly closed
+- Direct, confident eye contact with the lens
+
+**During the hand-to-lips moment:**
+- A soft, warm smile begins to appear
+- Eyes slightly narrow — genuine expression, not posed
+- Expression feels intimate and personal
+
+**During the kiss release:**
+- The smile is at its peak — natural, not frozen
+- Head tilts very slightly to one side (approx. 5 degrees)
+- Gaze stays locked on the camera
+
+**After the gesture:**
+- Smile softens and fades naturally
+- Expression returns to a calm, relaxed look
+- No abrupt facial change
+
+**Smile behavior:**
+- Appears and disappears naturally
+- No frozen smile
+- No constant grin
+- No exaggerated facial tension
+
+---
+
+## PERSONALITY
+
+- Warm and genuine
+- Playful but not over-the-top
+- Approachable
+- Feels like a real person casually recording a personal moment
+
+---
+
+## CAMERA &amp; POV
+
+- POV perspective, as if the phone is held by a person
+- Camera is completely fixed — no movement, no shake, no micro-movements
+- No zoom
+- Camera remains at chest/face height
+
+---
+
+## TIMING
+
+- Movements are continuous
+- No freezing
+- No looping poses
+- Smooth transitions between gestures
+- Kiss gesture occupies roughly the middle third of the animation
+
+---
+
+## REALISM RULES
+
+- Preserve original facial identity
+- Preserve skin texture
+- No tattoos, piercings, or ink anywhere on the skin — especially the arms, shoulders, and shoulder blades, the most common area where AI mistakenly adds a mark
+- Any part of the skin NOT clearly visible in Image 1 (e.g. back of the upper arm, shoulder blade) must be rendered as plain, unmarked skin matching the visible skin tone and texture — do not invent, generate, or guess any tattoo, pattern, or mark in areas not shown in Image 1
+- Preserve hair movement (slight natural motion)
+- Natural fabric physics
+- No beauty filters
+- No smoothing
+- No stylization
+
+---
+
+## RESTRICTIONS
+
+- No audio — completely silent, no music, no sound effects, no ambient sound
+- No talking
+- No text
+- No UI
+- No effects
+- No exaggerated or theatrical kiss gesture
+- No influencer posing clichés
+- No winking unless it occurs completely naturally with the expression
+- No tattoos of any kind, anywhere on the body
+
+---
+
+## FINAL RESULT
+
+A hyper-realistic POV video where the subject naturally blows a kiss to the camera — warm, spontaneous, and human. The gesture feels like an unscripted moment of connection, with real facial expression transitions, a confident gaze, and subtle body language — indistinguishable from a real casual phone recording.</pre></div>
+    </div>
+    <div class="card-footer">
+      <button class="copy-btn" onclick="copyText('p13', this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copiar
+      </button>
+    </div>
+  </div>
+
+  <div class="card" data-type="vid" data-search="animação cta v2 — beijo (detalhado) versão muito mais detalhada do cta-beijo-v1 — mesma sequência (aproxima + mão sobe aos lábios + libera o beijo + retorna), com fases nomeadas, micro-movimentos humanos, física de tecido/cabelo e bloqueio explícito contra tatuagens. #007 vid beta">
+    <div class="card-header">
+      <div class="card-meta">
+        <span class="tag tag-family">#007</span>
+        <span class="tag tag-vid">Vídeo</span>
+        <span class="tag tag-beta">BETA</span>
+      </div>
+      <div class="card-title">Animação CTA v2 — Beijo (Detalhado)</div>
+      <div class="card-desc">Versão muito mais detalhada do cta-beijo-v1 — mesma sequência (aproxima + mão sobe aos lábios + libera o beijo + retorna), com fases nomeadas, micro-movimentos humanos, física de tecido/cabelo e bloqueio explícito contra tatuagens.</div>
+      <div class="inputs">
+        <span class="input-badge">Img 1 — Avatar</span>
+      </div>
+    </div>
+    <div class="code-wrap">
+      <div class="code-scroll"><pre id="p14"># REALISTIC POV KISS-BLOW PRESENTATION
+
+## OBJECTIVE
+
+Animate the subject from Image 1 as a real person naturally blowing a kiss directly toward the camera.
+
+The animation should feel warm, spontaneous and authentic, as though she is casually recording a short personal video.
+
+Preserve the subject's identity, clothing, environment, lighting and framing exactly as shown in Image 1.
+
+---
+
+# IDENTITY LOCK
+
+Preserve exactly:
+
+- Face
+- Facial identity
+- Facial proportions
+- Skin tone
+- Skin texture
+- Hair
+- Hair color
+- Hair texture
+- Hair volume
+- Hair length
+- Body proportions
+- Clothing
+- Accessories
+- Background
+- Lighting
+- Camera framing
+
+Identity preservation has absolute priority.
+
+Never beautify, redesign, reinterpret or stylize any aspect of the subject.
+
+---
+
+# CAMERA
+
+POV perspective from a person standing still while holding a smartphone.
+
+The camera remains intentionally fixed throughout the entire animation.
+
+Maintain:
+
+- Chest-to-face height
+- Fixed framing
+- Fixed focal length
+- 50mm equivalent perspective
+- No zoom
+- No pan
+- No tilt
+- No rotation
+- No handheld shake
+- No micro-jitter
+- No focus breathing
+
+Only the subject moves.
+
+---
+
+# ANIMATION SEQUENCE
+
+The movement flows naturally from beginning to end.
+
+No pauses feel artificial.
+
+No movement appears choreographed.
+
+---
+
+## PHASE 1 — APPROACH
+
+The subject begins exactly as shown in Image 1.
+
+She stands comfortably at a natural mid-distance from the camera.
+
+Visible natural breathing.
+
+Occasional blinking.
+
+Tiny balance adjustments.
+
+She calmly takes one small, relaxed step toward the camera.
+
+Movement feels effortless.
+
+Her posture remains open.
+
+Her shoulders stay relaxed.
+
+Her body is naturally angled very slightly toward the camera.
+
+---
+
+## PHASE 2 — PREPARATION
+
+After stepping forward, she naturally transfers her weight onto one leg.
+
+One arm remains relaxed near her side.
+
+Her breathing remains visible.
+
+She maintains comfortable eye contact with the camera.
+
+---
+
+## PHASE 3 — HAND TO LIPS
+
+She slowly raises her right hand in a smooth natural arc.
+
+The movement originates naturally from the shoulder and elbow.
+
+Her wrist remains relaxed.
+
+Her fingers stay softly together.
+
+Her fingertips gently reach and touch her lips.
+
+The contact is real and visible.
+
+Her lips softly press against her fingertips for approximately one second.
+
+The hand never hovers away from the face.
+
+The gesture feels genuine and effortless.
+
+---
+
+## PHASE 4 — RELEASE
+
+Without interruption, she smoothly extends her arm forward and slightly upward toward the camera.
+
+The movement flows directly from the lips.
+
+Her fingers gradually open as if releasing the kiss into the air.
+
+The gesture remains soft, relaxed and intimate.
+
+Never exaggerated.
+
+Never theatrical.
+
+---
+
+## PHASE 5 — RETURN
+
+Her arm naturally lowers back to a relaxed resting position.
+
+She subtly shifts her weight again.
+
+Her posture remains relaxed.
+
+She comfortably returns to a neutral stance.
+
+She naturally holds eye contact for a brief moment before the animation ends.
+
+---
+
+# BODY LANGUAGE
+
+Natural posture.
+
+Relaxed shoulders.
+
+Visible breathing.
+
+Subtle weight transfer.
+
+Small balance corrections.
+
+Gentle hip movement.
+
+Relaxed fingers.
+
+Comfortable stance.
+
+No rigid posing.
+
+No theatrical performance.
+
+---
+
+# FACIAL PERFORMANCE
+
+Expressions evolve naturally throughout the animation.
+
+The subject never maintains a constant smile.
+
+### Opening
+
+- Neutral expression
+- Relaxed lips
+- Calm eyes
+- Comfortable confidence
+- Direct eye contact
+
+### While raising the hand
+
+A gentle smile gradually begins to appear.
+
+Eyes soften naturally.
+
+Facial muscles remain relaxed.
+
+### While touching the lips
+
+The smile becomes warm and genuine.
+
+Slight cheek movement.
+
+Subtle narrowing of the eyes.
+
+Natural affectionate expression.
+
+### During the kiss release
+
+The smile reaches its natural peak.
+
+Her head tilts approximately 5 degrees.
+
+Eye contact remains continuous.
+
+The expression feels warm, personal and spontaneous.
+
+### Ending
+
+The smile naturally softens.
+
+Expression gradually returns to calm.
+
+Comfortable relaxed face.
+
+Avoid:
+
+- Frozen smile
+- Constant grin
+- Overacting
+- Exaggerated facial expressions
+
+---
+
+# MICRO HUMAN MOVEMENTS
+
+Throughout the animation:
+
+- Visible breathing
+- Occasional blinking
+- Tiny eye refocusing
+- Natural head stabilization
+- Gentle shoulder relaxation
+- Small balance corrections
+- Subtle finger relaxation
+- Continuous organic movement
+
+Never appear robotic.
+
+Never freeze.
+
+---
+
+# HAIR
+
+Hair reacts naturally to body movement.
+
+Maintain exactly:
+
+- Color
+- Texture
+- Volume
+- Length
+- Style
+
+Only subtle secondary motion.
+
+No floating strands.
+
+No unrealistic simulation.
+
+---
+
+# FABRIC PHYSICS
+
+The clothing behaves according to its real material.
+
+Generate:
+
+- Natural folds
+- Gravity
+- Fabric tension
+- Compression
+- Gentle movement caused by body motion
+- Realistic settling
+
+Never produce:
+
+- Floating fabric
+- Clipping
+- Unrealistic stretching
+- Rigid cloth
+
+---
+
+# LIGHTING
+
+Preserve Image 1 lighting exactly.
+
+Maintain:
+
+- Light direction
+- Exposure
+- White balance
+- Color temperature
+- Shadow softness
+
+Lighting responds naturally as the body moves.
+
+Do not relight the subject.
+
+Do not introduce cinematic lighting.
+
+---
+
+# SKIN PRESERVATION
+
+Preserve all visible skin exactly.
+
+Previously hidden skin revealed during motion must:
+
+- Match existing skin tone.
+- Match existing skin texture.
+
+Do not generate:
+
+- Tattoos
+- Piercings
+- Body paint
+- Scars
+- Birthmarks
+- Moles
+- Freckles
+- Decorative markings
+- Ink of any kind
+
+Previously unseen skin must remain clean and fully consistent with the visible skin.
+
+---
+
+# VISUAL QUALITY
+
+Ultra-photorealistic.
+
+Authentic smartphone video.
+
+Natural motion blur.
+
+Professional photographic rendering.
+
+True camera dynamic range.
+
+Visible skin microtexture.
+
+Natural fabric detail.
+
+Natural hair detail.
+
+No CGI appearance.
+
+No AI artifacts.
+
+No beauty filters.
+
+No skin smoothing.
+
+No plastic appearance.
+
+No stylization.
+
+---
+
+# TIMING
+
+Opening stance: approximately 1 second.
+
+Step forward: approximately 1 second.
+
+Hand to lips: approximately 2 seconds.
+
+Kiss release: approximately 2 seconds.
+
+Return to neutral: approximately 2 seconds.
+
+Motion remains continuous throughout.
+
+No freezing.
+
+No looping.
+
+---
+
+# RESTRICTIONS
+
+No audio.
+
+No speech.
+
+No music.
+
+No ambient sound.
+
+No subtitles.
+
+No captions.
+
+No text.
+
+No logos.
+
+No watermarks.
+
+No UI.
+
+No visual effects.
+
+No exaggerated kiss gesture.
+
+No influencer posing clichés.
+
+No forced wink.
+
+No theatrical acting.
+
+---
+
+# FINAL RESULT
+
+Produce a hyper-realistic silent POV smartphone video in which the subject naturally takes one small step toward the camera, gently brings her fingertips to her lips, briefly presses them against her lips, softly blows a kiss toward the viewer, and naturally returns to a relaxed posture.
+
+The movement, facial expressions, breathing, eye contact, hair, clothing physics and body language should be indistinguishable from a real spontaneous smartphone recording, preserving the subject's identity perfectly throughout the entire animation.</pre></div>
+    </div>
+    <div class="card-footer">
+      <button class="copy-btn" onclick="copyText('p14', this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copiar
+      </button>
+    </div>
+  </div>
+
+  <div class="card" data-type="vid" data-search="animação — composição giro lateral v1 avatar já com roupa (img 1). a modelo gira levemente para o lado (não 360°) para mostrar o caimento e silhueta da roupa de perfil, depois retorna à frente. #008 vid">
+    <div class="card-header">
+      <div class="card-meta">
+        <span class="tag tag-family">#008</span>
+        <span class="tag tag-vid">Vídeo</span>
+      </div>
+      <div class="card-title">Animação — Composição Giro Lateral v1</div>
+      <div class="card-desc">Avatar já com roupa (Img 1). A modelo gira levemente para o lado (não 360°) para mostrar o caimento e silhueta da roupa de perfil, depois retorna à frente.</div>
+      <div class="inputs">
+        <span class="input-badge">Img 1 — Avatar com roupa</span>
+      </div>
+    </div>
+    <div class="code-wrap">
+      <div class="code-scroll"><pre id="p15">Use Image 1 as the ONLY reference — preserve the subject's identity, clothing, pose, environment, and lighting exactly as shown.
+
+Animate a hyper-realistic POV video where the subject performs a slow, natural lateral rotation — turning to one side to show the clothing's silhouette and fit from a side profile, then returning to face the camera.
+
+---
+
+## IMAGE INPUT (CRITICAL)
+
+- Preserve the subject's face, skin tone, body proportions, and hair exactly as in Image 1
+- No tattoos, piercings, or ink anywhere on the skin — especially the arms, shoulders, and shoulder blades, the most common area where AI mistakenly adds a mark
+- Any part of the skin NOT clearly visible in Image 1 (e.g. back of the upper arm, shoulder blade, side of the torso) must be rendered as plain, unmarked skin matching the visible skin tone and texture — do not invent, generate, or guess any tattoo, pattern, or mark in areas not shown in Image 1, even as the rotation reveals new angles
+- Preserve the clothing exactly: color, fabric, texture, cut, shape, and fit
+- Preserve the environment: background, lighting, framing, and camera distance
+- The subject's starting and ending position must match Image 1
+
+---
+
+## STARTING POSITION
+
+- The video opens with the scene exactly as in Image 1 — subject facing the camera, dressed as shown
+- Brief natural pause (~0.5s) before the rotation begins — casual, relaxed stance
+- Slight natural body movement: subtle weight shift, natural breathing — no stiffness
+
+---
+
+## ROTATION SEQUENCE (MAIN ACTION — CRITICAL)
+
+The rotation must feel completely natural — like a person casually turning to show their outfit, not a runway spin.
+
+**Phase 1 — Turn to the side (slow):**
+- She begins rotating her body slowly toward one side (right or left — whichever reads more naturally given the pose in Image 1)
+- The rotation is approximately 60–90 degrees — enough to show a clear side profile
+- NOT a full 180° or 360° — just a partial, organic turn
+- Her head turns with her body naturally
+- Arms remain in a relaxed, natural position throughout — no stiff posing
+- The movement is slow and deliberate — real human pace, not rushed
+- As she turns, the side profile of the clothing becomes fully visible: waist, hips, silhouette, fabric drape from the side
+
+**Phase 2 — Hold the side (brief pause):**
+- She holds the side position naturally for approximately 1 second
+- Slight natural sway or weight shift — she doesn't freeze completely
+- Her head may angle slightly back toward the camera in a natural glance
+- This pause gives a clear view of the clothing's side fit and silhouette
+
+**Phase 3 — Return to front:**
+- She slowly and naturally rotates back to face the camera
+- The movement back is as smooth and relaxed as the turn out
+- She settles into her original forward-facing pose from Image 1
+- The final frame matches the opening frame — subject facing the camera, full scene visible
+
+---
+
+## CLOTHING DURING ROTATION (VERY IMPORTANT)
+
+- As she turns, the clothing must move and settle with realistic fabric physics
+- Natural drape, fold, and tension visible from the side angle
+- Fabric responds to the body's rotation naturally — no stiffness, no clipping
+- The side profile should clearly show:
+  - Waistline fit
+  - Hip silhouette
+  - Fabric fall and length from side
+  - Any back details partially visible during the turn
+- Physics match the fabric type in Image 3 (heavy fabric = slow settle; light fabric = more movement)
+
+---
+
+## GENERAL MOTION STYLE
+
+- Slow, natural, and fluid throughout
+- Not runway — not theatrical
+- Not robotic
+- Feels like a real person casually showing their outfit to a friend
+- Real human weight and pacing in every movement
+
+---
+
+## FACIAL EXPRESSION
+
+**At start (facing camera):**
+- Calm, natural expression
+- Soft confidence — not posing aggressively
+- Direct eye contact with the camera
+
+**During the turn:**
+- Expression remains relaxed and natural
+- A subtle, brief smile may appear naturally
+- No exaggerated reaction, no performance
+
+**During the side hold:**
+- She may glance back toward the camera naturally — a casual sideways look
+- Expression is light and natural
+
+**On return to front:**
+- Expression settles back to calm and confident
+- Soft smile or neutral — matching the mood of Image 1
+
+---
+
+## CAMERA &amp; POV
+
+- POV perspective throughout — camera is completely fixed
+- No movement, no shake, no zoom at any point
+- Camera remains at chest/face height
+- Only the subject moves — the camera never rotates or follows
+
+---
+
+## IDENTITY LOCK (CRITICAL)
+
+- DO NOT change face, skin tone, body proportions, or hair from Image 1
+- DO NOT add tattoos, piercings, or ink
+- DO NOT alter or reinterpret the clothing
+- DO NOT change the background or environment
+- Preserve everything from Image 1 exactly
+
+---
+
+## LIGHTING &amp; INTEGRATION
+
+- Match lighting from Image 1 throughout the entire animation
+- As she rotates, lighting falls naturally on all sides of her body — no flat lighting
+- Natural shadow behavior as she turns — shadows shift realistically with her body angle
+- No studio lighting, no cinematic effects
+
+---
+
+## REALISM RULES
+
+- Ultra realistic photographic rendering throughout all frames
+- Visible skin microtexture
+- Natural skin tone variation — no flat color
+- No tattoos, piercings, or ink anywhere on the skin
+- 50mm lens equivalent perspective
+- True camera dynamic range
+- No beauty filter, no smoothing, no plastic effect, no CGI look
+- Subtle natural texture grain
+- Natural hair movement as she turns
+
+---
+
+## TIMING
+
+- Opening pause: ~0.5s
+- Turn to side: ~1.5–2s
+- Hold at side: ~1s
+- Return to front: ~1.5s
+- Movements are continuous and smooth — no freezing at any point
+- No looping
+
+---
+
+## RESTRICTIONS
+
+- No audio — completely silent
+- No talking
+- No text, UI, logos, or watermarks
+- No full 360° spin
+- No runway walk or fashion show movement
+- No exaggerated posing
+- No influencer clichés
+- No tattoos of any kind, anywhere on the body
+
+---
+
+## FINAL RESULT
+
+A hyper-realistic POV video where the subject from Image 1 performs a slow, natural lateral rotation to show the clothing's side profile and silhouette, then returns to face the camera — same identity, same clothing, same environment. Indistinguishable from a real casual phone recording.</pre></div>
+    </div>
+    <div class="card-footer">
+      <button class="copy-btn" onclick="copyText('p15', this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copiar
+      </button>
+    </div>
+  </div>
+
+  <div class="card" data-type="vid" data-search="animação — composição giro lateral v2 (detalhado) versão expandida do giro lateral — mesma entrada única (avatar já com roupa), gira 60–90° para mostrar o perfil e retorna, com micro-movimentos humanos, física de tecido e cabelo, e bloqueio explícito contra tatuagens detalhado por seção. #008 vid beta">
+    <div class="card-header">
+      <div class="card-meta">
+        <span class="tag tag-family">#008</span>
+        <span class="tag tag-vid">Vídeo</span>
+        <span class="tag tag-beta">BETA</span>
+      </div>
+      <div class="card-title">Animação — Composição Giro Lateral v2 (Detalhado)</div>
+      <div class="card-desc">Versão expandida do giro lateral — mesma entrada única (avatar já com roupa), gira 60–90° para mostrar o perfil e retorna, com micro-movimentos humanos, física de tecido e cabelo, e bloqueio explícito contra tatuagens detalhado por seção.</div>
+      <div class="inputs">
+        <span class="input-badge">Img 1 — Avatar com roupa</span>
+      </div>
+    </div>
+    <div class="code-wrap">
+      <div class="code-scroll"><pre id="p16"># REALISTIC SIDE PROFILE CLOTHING PRESENTATION
+
+## OBJECTIVE
+
+Use Image 1 as the absolute reference.
+
+Animate the subject as a real person naturally turning to display the clothing from a side profile before returning to the original position.
+
+Preserve the subject's identity, clothing, environment, lighting and framing exactly as shown in Image 1.
+
+The result should resemble an authentic smartphone recording rather than a staged fashion presentation.
+
+---
+
+# IDENTITY LOCK
+
+Preserve exactly:
+
+- Face
+- Facial identity
+- Skin tone
+- Skin texture
+- Hair
+- Hair color
+- Hair texture
+- Hair volume
+- Hair length
+- Body proportions
+- Clothing
+- Accessories
+- Pose proportions
+- Background
+- Lighting
+- Camera framing
+
+Identity preservation has absolute priority.
+
+Do not beautify, redesign, reinterpret or stylize any aspect of the subject.
+
+---
+
+# IMAGE PRESERVATION
+
+Image 1 is the only visual reference.
+
+Do not modify:
+
+- Clothing
+- Background
+- Camera distance
+- Perspective
+- Lighting
+- Color balance
+- Exposure
+- White balance
+
+The first and final frames should closely match Image 1.
+
+---
+
+# CAMERA
+
+POV perspective from a person standing still while holding a smartphone.
+
+The camera remains intentionally fixed throughout the entire clip.
+
+Maintain:
+
+- Chest-to-face height
+- Fixed framing
+- Fixed focal length
+- 50mm equivalent lens
+- No zoom
+- No pan
+- No tilt
+- No rotation
+- No handheld shake
+- No micro-jitter
+- No focus breathing
+
+Only the subject moves.
+
+---
+
+# ANIMATION SEQUENCE
+
+The animation flows continuously without abrupt transitions.
+
+### Phase 1 — Opening
+
+The subject begins exactly as shown in Image 1.
+
+She faces the camera naturally.
+
+Maintain direct eye contact.
+
+Remain relaxed.
+
+Visible natural breathing.
+
+Tiny balance adjustments.
+
+Occasional blinking.
+
+Pause naturally for approximately 0.5 seconds.
+
+---
+
+### Phase 2 — Turn
+
+The subject slowly rotates approximately 60–90 degrees toward the side that feels most natural according to the original pose.
+
+The movement is smooth, relaxed and deliberate.
+
+The head rotates naturally together with the body.
+
+Arms remain relaxed.
+
+Weight transfers gradually between both feet.
+
+The movement should resemble someone casually showing an outfit to a friend.
+
+Never resemble a runway presentation.
+
+---
+
+### Phase 3 — Side View
+
+The subject briefly holds the side position for approximately one second.
+
+She does not freeze.
+
+Visible natural breathing.
+
+Subtle body sway.
+
+Tiny balance corrections.
+
+She may briefly glance toward the camera with a soft, relaxed expression.
+
+This pause clearly presents:
+
+- Side silhouette
+- Waistline
+- Hip contour
+- Garment length
+- Fabric drape
+- Partial rear garment details
+
+---
+
+### Phase 4 — Return
+
+The subject slowly rotates back to face the camera.
+
+Movement remains fluid and continuous.
+
+Weight naturally shifts back to the original stance.
+
+She settles naturally into the original pose.
+
+The final frame closely matches Image 1.
+
+---
+
+# BODY LANGUAGE
+
+Natural posture.
+
+Relaxed shoulders.
+
+Natural breathing.
+
+Gentle balance corrections.
+
+Subtle weight transfer.
+
+Relaxed arms.
+
+Natural finger relaxation.
+
+No rigid posing.
+
+No exaggerated modeling behavior.
+
+---
+
+# FACIAL PERFORMANCE
+
+Expressions evolve naturally.
+
+The subject never maintains a frozen smile.
+
+Opening:
+
+- Calm expression
+- Relaxed lips
+- Soft confidence
+- Direct eye contact
+
+During rotation:
+
+- Neutral expression
+- Slight natural smile may briefly appear
+
+Side profile:
+
+- Soft sideways glance toward the camera
+- Comfortable expression
+
+Return:
+
+- Neutral or gentle smile
+- Expression naturally settles
+
+Avoid:
+
+- Frozen smile
+- Constant grin
+- Overacting
+- Exaggerated expressions
+
+---
+
+# MICRO HUMAN MOVEMENTS
+
+Throughout the animation:
+
+- Visible breathing
+- Occasional blinking
+- Tiny eye refocusing
+- Small shoulder relaxation
+- Gentle balance corrections
+- Natural head stabilization
+- Continuous organic movement
+
+Never appear robotic.
+
+Never freeze.
+
+---
+
+# HAIR
+
+Hair responds naturally to body movement.
+
+Maintain exactly:
+
+- Color
+- Texture
+- Volume
+- Length
+- Style
+
+Only subtle secondary motion.
+
+No floating strands.
+
+No unrealistic simulation.
+
+---
+
+# FABRIC PHYSICS
+
+The clothing behaves according to its real material.
+
+Generate:
+
+- Natural folds
+- Gravity
+- Compression
+- Fabric tension
+- Natural draping
+- Slight inertia during turning
+- Realistic settling after movement
+
+Heavy fabrics settle more slowly.
+
+Light fabrics move more freely.
+
+Never produce:
+
+- Floating fabric
+- Clipping
+- Unrealistic stretching
+- Rigid cloth
+
+---
+
+# LIGHTING
+
+Preserve the lighting from Image 1.
+
+Maintain:
+
+- Light direction
+- Exposure
+- White balance
+- Color temperature
+- Shadow softness
+
+As the body rotates, shadows respond naturally to body orientation.
+
+Do not introduce cinematic lighting.
+
+Do not relight the subject.
+
+---
+
+# SKIN PRESERVATION
+
+Preserve visible skin exactly.
+
+Previously hidden skin revealed during rotation must:
+
+- Match the existing skin tone.
+- Match the existing skin texture.
+
+Do not generate:
+
+- Tattoos
+- Piercings
+- Body paint
+- Scars
+- Birthmarks
+- Moles
+- Freckles
+- Decorative markings
+- Ink of any kind
+
+Previously unseen skin must remain clean and fully consistent with the visible skin.
+
+---
+
+# VISUAL QUALITY
+
+Ultra-photorealistic.
+
+Authentic smartphone video.
+
+Natural motion blur.
+
+True camera dynamic range.
+
+Professional photographic rendering.
+
+Visible skin microtexture.
+
+Natural fabric detail.
+
+Natural hair detail.
+
+No CGI appearance.
+
+No AI artifacts.
+
+No beauty filters.
+
+No skin smoothing.
+
+No plastic appearance.
+
+No stylization.
+
+---
+
+# TIMING
+
+Opening pause: approximately 0.5 seconds.
+
+Rotation toward the side: approximately 2 seconds.
+
+Side hold: approximately 1 second.
+
+Return to the front: approximately 2 seconds.
+
+Motion remains continuous throughout.
+
+No freezing.
+
+No looping.
+
+---
+
+# RESTRICTIONS
+
+No audio.
+
+No speech.
+
+No music.
+
+No ambient sound.
+
+No subtitles.
+
+No captions.
+
+No text.
+
+No logos.
+
+No watermarks.
+
+No UI.
+
+No visual effects.
+
+No 360° rotation.
+
+No runway walking.
+
+No fashion show posing.
+
+No influencer posing clichés.
+
+No exaggerated gestures.
+
+---
+
+# FINAL RESULT
+
+Produce a hyper-realistic silent POV smartphone video in which the subject naturally turns approximately 60–90 degrees to present the outfit from the side, briefly holds the profile, and smoothly returns to the original position.
+
+Identity, clothing, lighting, environment, framing and overall appearance remain perfectly consistent with Image 1 throughout the entire animation, making the result indistinguishable from a real casual phone recording.</pre></div>
+    </div>
+    <div class="card-footer">
+      <button class="copy-btn" onclick="copyText('p16', this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copiar
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="search-empty" id="search-empty">Nenhum prompt encontrado.</div>
 
 <script>
-  const TAG_MAP = {
-    img:  ['tag-img',  'Imagem'],
-    vid:  ['tag-vid',  'Vídeo'],
-    json: ['tag-json', 'JSON'],
-  };
-
-  let activeFilter = 'all';
-
-  function esc(s) {
-    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-  }
-
-  function renderCard(p, id) {
-    const pid = 'p' + id;
-    const badges = p.tags.map(t => {
-      const [cls, label] = TAG_MAP[t] || ['', t];
-      return '<span class="tag ' + cls + '">' + label + '</span>';
-    }).join(' ');
-
-    const inputBadges = p.inputs.map(i => '<span class="input-badge">' + i + '</span>').join('\n');
-
-    return `
-    <div class="card" data-type="${p.type}">
-      <div class="card-header">
-        <div class="card-meta">${badges}</div>
-        <div class="card-title">${p.title}</div>
-        ${p.desc ? `<div class="card-desc">${esc(p.desc)}</div>` : ''}
-        <div class="inputs">${inputBadges}</div>
-      </div>
-      ${p.video ? `<div class="card-video">
-        <video src="${encodeURI(p.video)}" controls muted loop playsinline></video>
-      </div>` : ''}
-      <div class="code-wrap">
-        <div class="code-scroll"><pre id="${pid}">${esc(p.body)}</pre></div>
-      </div>
-      <div class="card-footer">
-        <button class="copy-btn" onclick="copyText('${pid}', this)">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="9" y="9" width="13" height="13" rx="2"/>
-            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
-          </svg>
-          Copiar
-        </button>
-      </div>
-    </div>`;
-  }
-
-  function render(prompts) {
-    const imgs = prompts.filter(p => p.type === 'img');
-    const vids = prompts.filter(p => p.type === 'vid');
-
-    document.getElementById('grid-img').innerHTML =
-      imgs.map((p, i) => renderCard(p, i + 1)).join('');
-    document.getElementById('grid-vid').innerHTML =
-      vids.map((p, i) => renderCard(p, imgs.length + i + 1)).join('');
-
-    applyFilter(activeFilter);
-  }
-
-  async function load() {
-    const res     = await fetch('/api/prompts');
-    const prompts = await res.json();
-    render(prompts);
-  }
+  let currentType = 'all';
 
   function filter(type, btn) {
-    activeFilter = type;
+    currentType = type;
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
     btn.classList.add('active');
-    applyFilter(type);
+    applyFilters();
   }
 
-  function applyFilter(type) {
+  function applyFilters() {
+    const query = document.getElementById('search').value.trim().toLowerCase();
+    const terms = query.split(/s+/).filter(Boolean);
+
+    let imgVisible = 0;
+    let vidVisible = 0;
+
     document.querySelectorAll('.card').forEach(card => {
-      if (type !== 'all' && card.dataset.type !== type) {
-        card.dataset.hidden = '1';
-      } else {
+      const typeMatch = currentType === 'all' || card.dataset.type === currentType;
+      const searchMatch = terms.every(t => card.dataset.search.includes(t));
+
+      if (typeMatch && searchMatch) {
         delete card.dataset.hidden;
+        if (card.dataset.type === 'img') imgVisible++;
+        if (card.dataset.type === 'vid') vidVisible++;
+      } else {
+        card.dataset.hidden = '1';
       }
     });
-    document.getElementById('label-img').style.display = type === 'vid' ? 'none' : '';
-    document.getElementById('label-vid').style.display = type === 'img' ? 'none' : '';
+
+    const showImgSection = currentType !== 'vid' && imgVisible > 0;
+    const showVidSection = currentType !== 'img' && vidVisible > 0;
+
+    document.getElementById('label-img').style.display = showImgSection ? '' : 'none';
+    document.getElementById('grid-img').style.display = showImgSection ? '' : 'none';
+    document.getElementById('label-vid').style.display = showVidSection ? '' : 'none';
+    document.getElementById('grid-vid').style.display = showVidSection ? '' : 'none';
+
+    document.getElementById('search-empty').style.display =
+      (imgVisible === 0 && vidVisible === 0) ? '' : 'none';
   }
 
   function copyText(id, btn) {
@@ -301,36 +4407,18 @@
     navigator.clipboard.writeText(text).then(() => {
       btn.classList.add('copied');
       btn.innerHTML = `
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
-          <polyline points="20 6 9 17 4 12"/>
-        </svg> Copiado!`;
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><polyline points="20 6 9 17 4 12"/></svg>
+        Copiado!
+      `;
       setTimeout(() => {
         btn.classList.remove('copied');
         btn.innerHTML = `
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
-            <rect x="9" y="9" width="13" height="13" rx="2"/>
-            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
-          </svg> Copiar`;
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copiar
+        `;
       }, 2000);
     });
   }
-
-  // ── live reload via SSE ──────────────────────────────────────────────────────
-  function connectSSE() {
-    const es    = new EventSource('/sse');
-    es.onmessage = (e) => { if (e.data === 'reload') load(); };
-    es.onerror   = ()  => { setTimeout(connectSSE, 2000); };
-  }
-
-  document.addEventListener('mouseenter', e => {
-    if (e.target.tagName === 'VIDEO') e.target.play().catch(() => {});
-  }, true);
-  document.addEventListener('mouseleave', e => {
-    if (e.target.tagName === 'VIDEO') { e.target.pause(); e.target.currentTime = 0; }
-  }, true);
-
-  load();
-  connectSSE();
 </script>
 </body>
 </html>

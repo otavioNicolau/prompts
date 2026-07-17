@@ -4,6 +4,7 @@ desc: Mantém a pessoa da Imagem 1 100% intacta (rosto, corpo, pose, roupa) e tr
 type: img
 tags: img
 inputs: Img 1 — Pessoa (mantém intacta) | Img 2 — Cenário/Ambiente (referência)
+family: 001
 order: 1
 ---
 ## TASK TYPE: BACKGROUND REPLACEMENT ONLY (NOT A SUBJECT SWAP)
