@@ -47,6 +47,7 @@ function tagBadge(tag) {
     vid:  ['tag-vid',  'Vídeo'],
     json: ['tag-json', 'JSON'],
     beta: ['tag-beta', 'BETA'],
+    novo: ['tag-novo', 'NOVO'],
   };
   const [cls, label] = map[tag] || ['', tag];
   return `<span class="tag ${cls}">${label}</span>`;
@@ -113,6 +114,8 @@ function buildHtml(imgCards, vidCards) {
       --tag-json-text: #fb923c;
       --tag-beta: #3a1a2a;
       --tag-beta-text: #f472b6;
+      --tag-novo: #1a2a3a;
+      --tag-novo-text: #38bdf8;
       --tag-family: #26262c;
       --tag-family-text: #a1a1aa;
     }
@@ -253,6 +256,7 @@ function buildHtml(imgCards, vidCards) {
     .tag-vid  { background: var(--tag-vid);  color: var(--tag-vid-text); }
     .tag-json { background: var(--tag-json); color: var(--tag-json-text); }
     .tag-beta { background: var(--tag-beta); color: var(--tag-beta-text); }
+    .tag-novo { background: var(--tag-novo); color: var(--tag-novo-text); }
     .tag-family { background: var(--tag-family); color: var(--tag-family-text); font-family: 'SF Mono', 'Fira Code', monospace; }
 
     .card-title {
